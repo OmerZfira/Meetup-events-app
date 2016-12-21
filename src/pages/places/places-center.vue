@@ -1,16 +1,16 @@
 <template>
   <div class="app">
     <section class="email-content">
-      <email-list :emails="emails" @displayEmail="displayEmail" @filter="emailFilter = $event">
-      </email-list>
-      <email-details :displayedEmail="displayedEmail" @deleteEmail="deleteEmail">
-      </email-details>
+      <place-list :emails="emails" @displayEmail="displayEmail" @filter="emailFilter = $event">
+      </place-list>
+      <place-details :displayedEmail="displayedEmail" @deleteEmail="deleteEmail">
+      </place-details>
     </section>
   </div>
 </template>
 <script>
-  import emailList from '../../components/emails/email-list.vue'
-  import emailDetails from '../../components/emails/email-details.vue'
+  import placeList from '../../components/places/place-list.vue'
+  import placeDetails from '../../components/places/place-details.vue'
 
   export default {
     data() {
@@ -56,8 +56,8 @@
       }
     },
     components: {
-      emailList,
-      emailDetails,
+      placeList,
+      placeDetails,
     }
   }
 </script>

@@ -17,7 +17,7 @@
         },
         computed: {
             imgUrl() {
-                return (this.email.isRead) ? './src/assets/mail-read.png' : './src/assets/mail.png';
+                return (this.email.isRead) ? '../assets/mail-read.png' : '../assets/mail.png';
             }
         },
     }
