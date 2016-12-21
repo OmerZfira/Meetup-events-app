@@ -1,7 +1,6 @@
 <template>
-    <div class="email-preview" :class="{unMarked: email.isRead, displayed: email.isDisplayed}">
-        <img :src="imgUrl" alt="mail-icon" />
-        <h4>&#187; {{email.subject}}</h3>
+    <div class="place-preview" :class="{unMarked: place.isRead, displayed: place.isDisplayed}">
+        <h4>&#187; {{place.subject}}</h3>
     </div>
 </template>
 
@@ -10,21 +9,16 @@
 
     export default {
         props: {
-            email: {
+            place: {
                 required: true,
                 type: Object
-            }
-        },
-        computed: {
-            imgUrl() {
-                return (this.email.isRead) ? '../assets/mail-read.png' : '../assets/mail.png';
             }
         },
     }
 </script>
 
 <style scoped>
-.email-preview {
+.place-preview {
     border: 1px lightgray outset ;
     background: #7aebba;
     display:flex;

@@ -1,63 +1,95 @@
 <template>
   <div class="app">
-    <section class="email-content">
-      <place-list :emails="emails" @displayEmail="displayEmail" @filter="emailFilter = $event">
+    <section class="place-content">
+      <place-list v-if="1" :places="places" @displayPlace="displayPlace" @filter="placeFilter = $event">
       </place-list>
-      <place-details :displayedEmail="displayedEmail" @deleteEmail="deleteEmail">
+      <place-details v-else :displayedPlace="displayedPlace" @deletePlace="deletePlace">
       </place-details>
+      <place-map :places="places">
+
+      </place-map>
+
     </section>
   </div>
 </template>
+
 <script>
-  import placeList from '../../components/places/place-list.vue'
-  import placeDetails from '../../components/places/place-details.vue'
+  import placeList from '../../components/places/place-list/place-list.vue'
+  import placeDetails from '../../components/places/place-details/place-details.vue'
+  import placeMap from '../../components/places/place-map/place-map.vue'
+
 
   export default {
+
     data() {
       return {
-        emailsDB: [
-          { id: 1, subject: 'hello', from: 'puki', date: '', isUnarchived: true, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-          { id: 2, subject: 'vue', from: 'muki', date: '', isUnarchived: true, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
-          { id: 3, subject: 'js', from: 'shuki', date: '', isUnarchived: true, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' }
+        placesDB: [
+          {
+            "venue": {
+              "id": 1,
+              "name": 'this',
+              "lat": 32.06399154663086,
+              "lng": 34.77415084838867,
+              "tags": ['fun', 'food']
+            },
+          },
+          {
+            "venue": {
+              "id": 2,
+              "name": "is",
+              "lat": 32.02274703979492,
+              "lng": 34.77984619140625,
+              "tags": ['work', 'anything']
+            },
+          },
+          {
+            "venue": {
+              "id": 3,
+              "name": "mapAPI",
+              "lat": 32.06999969482422,
+              "lng": 34.79000045776367,
+              "tags": ['fun', 'work']
+            },
+          },
         ],
-        displayedEmail: {},
-        emailFilter: { readStatus: 'all' },
+        displayedPlace: {},
+        placeFilter: { readStatus: 'all' },
       }
     },
-    methods: {
-      displayEmail(emailId) {
-        this.emails.forEach(email => {
-          if (email.id === emailId) {
-            email.isDisplayed = true;
-            this.displayedEmail = email;
-          } else {
-            email.isDisplayed = false;
-          }
-        });
-      },
-      deleteEmail(emailId) {
-        this.emailsDB = this.emailsDB.filter(email => email.id !== emailId);
-      },
-    },
     computed: {
-      emails() {
-        if (!this.emailFilter.txt && this.emailFilter.readStatus === 'all') {
-          return this.emailsDB
+      places() {
+        if (!this.placeFilter.txt && this.placeFilter.readStatus === 'all') {
+          return this.placesDB
         }
         else {
-          return this.emailsDB.filter(email => {
-            return (email.subject.toLowerCase().includes(this.emailFilter.txt.toLowerCase()) ||
-              email.body.toLowerCase().includes(this.emailFilter.txt.toLowerCase()) ||
-              email.from.toLowerCase().includes(this.emailFilter.txt.toLowerCase())) &&
-              (this.emailFilter.readStatus === 'all' || email.isRead === this.emailFilter.readStatus)
+          return this.placesDB.filter(place => {
+            return (place.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
+              place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
+              (this.placeFilter.readStatus === 'all' || place.isRead === this.placeFilter.readStatus)
           });
 
         };
       }
     },
+    methods: {
+      displayPlace(placeId) {
+        this.places.forEach(place => {
+          if (place.id === placeId) {
+            place.isDisplayed = true;
+            this.displayedPlace = place;
+          } else {
+            place.isDisplayed = false;
+          }
+        });
+      },
+      deletePlace(placeId) {
+        this.placesDB = this.placesDB.filter(place => place.id !== placeId);
+      },
+    },
     components: {
       placeList,
       placeDetails,
+      placeMap
     }
   }
 </script>
@@ -70,7 +102,7 @@
   flex-direction: column;
   border-radius: 15px;
 }
-.email-content {
+.place-content {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -80,4 +112,6 @@
 ul {
   list-style: none;
 }
+
+
 </style>
