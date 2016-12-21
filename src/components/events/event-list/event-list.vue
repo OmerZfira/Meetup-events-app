@@ -3,15 +3,15 @@
         <h1>Event-list!</h1>
         <event-preview></event-preview>
     </div>
-</template>
+</template> 
 
 <script>
-    import eventPreview from '../../components/event-preview/event-preview.vue';
+    import eventPreview from '../event-preview/event-preview.vue';
     export default {
         data() {
             return {
 
-            }
+            }  
         },
         components: {
             'event-preview': eventPreview
