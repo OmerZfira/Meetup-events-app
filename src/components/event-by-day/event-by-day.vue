@@ -19,7 +19,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="sass">
     #app {
         background: purple;
         padding: 50px;
