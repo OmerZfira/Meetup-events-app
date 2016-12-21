@@ -1,8 +1,8 @@
 <template>
     <div id="about">
         <div>
-             <h1>About Component</h1>
-        </div>
+             <h1>About Component</h1>  
+        </div>   
     </div> 
 </template>
 
@@ -17,5 +17,5 @@
 </script>
 
 <style scoped>
-
+ 
 </style>

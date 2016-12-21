@@ -31,7 +31,7 @@
       Home
     </a>
     <a class="nav-item" href="#">
-      Documentation
+      About
     </a>
     <a class="nav-item" href="#">
       Blog
@@ -42,18 +42,18 @@
         <span class="icon">
           <i class="fa fa-twitter"></i>
         </span>
-        <span>Tweet</span>
+        <span>Places</span>
       </a>
       <a class="button is-primary" href="#">
         <span class="icon">
           <i class="fa fa-download"></i>
         </span>
-        <span>Download</span>
+        <span>Event</span>
       </a>
     </span>
   </div>
 </nav>
-    </div>
+    </div> 
 </template>
 
 <script>
