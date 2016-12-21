@@ -1,0 +1,30 @@
+<template>
+    <div id='app'>
+        <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <router-link to="/" class="navbar-brand">CodingAcadmey Vue</router-link>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                    <li>
+                        <router-link to="/about">About</router-link>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() { 
+            return {
+             
+            }
+        }
+    }
+</script> 
+
+<style scoped>
+
+</style>

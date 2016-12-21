@@ -1,29 +1,31 @@
 import style from './style.scss';
 import Vue from 'vue'
 import VueRouter from 'vue-router';
+import Moment from 'moment';
 
-import Home from './components/home';
-import About from './components/about';
-import MainNav from './components/main-nav';
+import Home from './pages/home/home.vue';
+import About from './pages/about/about.vue';
+import MainNav from './pages/main-nav/main-nav.vue';
 
 Vue.use(VueRouter);
 
+
 const routes = [{
-  path: '/',
-  component: Home
+    path: '/',
+    component: Home
 }, {
-  path: '/about',
-  component: About
+    path: '/about',
+    component: About
 }]
 
 const router = new VueRouter({
-  mode: 'history',
-  routes
+    mode: 'history',
+    routes
 })
 
 const app = new Vue({
-  router,
-  components: {
-    'main-nav': MainNav
-  }
+    router,
+    components: {
+        'main-nav': MainNav
+    }
 }).$mount('#app')
