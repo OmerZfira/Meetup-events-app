@@ -7,8 +7,8 @@
 </template>
 
 <script>
-    import EventFilter from './event-filter.vue';
-    import EventByDay from './event-by-day.vue'
+    import EventFilter from '../event-filter/event-filter.vue';
+    import EventByDay from '../event-by-day/event-by-day.vue';
     export default {
         data() {
             return {

@@ -11,18 +11,18 @@
 </template>
 
 <script>
-import eventCenter from '../../components/event-center.vue';
+    import eventCenter from '../../components/event-center/event-center.vue';
     export default {
         data: () => {
             return {
-            items: []
+                items: []
             }
         },
-        methods : {
+        methods: {
 
         },
         components: {
-            'event-center' : eventCenter
+            'event-center': eventCenter
         }
     }
 </script>
@@ -30,5 +30,5 @@ import eventCenter from '../../components/event-center.vue';
 <style scoped>
     h1 {
         color: lightblue;
-        }
+    }
 </style>

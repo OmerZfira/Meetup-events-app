@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import eventPreview from './event-preview.vue';
+    import eventPreview from '../../components/event-preview/event-preview.vue';
     export default {
         data() {
             return {
