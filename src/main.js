@@ -6,6 +6,7 @@ import Moment from 'moment';
 import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
+import Places from './pages/places/places-center.vue';
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,9 @@ Vue.use(VueRouter);
 const routes = [{
     path: '/',
     component: Home
+}, {
+    path: '/places',
+    component: Places
 }, {
     path: '/about',
     component: About
