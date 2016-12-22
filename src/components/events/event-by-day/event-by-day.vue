@@ -17,7 +17,7 @@
             events : {
                 type : Array
             }
-        }
+        },
         data() {
             return {
                 eventByDay : {
