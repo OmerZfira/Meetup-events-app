@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="email-center">
     <app-header></app-header>
     <section class="email-content">
       <email-list :emails="emails" @displayEmail="displayEmail" @filter="emailFilter = $event">
@@ -12,10 +12,11 @@
   </div>
 </template>
 <script>
-  import appHeader from './components/app-header.vue'
-  import emailList from './components/emails/email-list.vue'
-  import emailDetails from './components/emails/email-details.vue'
-  import emailStatus from './components/emails/email-status.vue'
+  import appHeader from '../../components/emails/email-header/email-header.vue';
+  import emailList from '../../components/emails/email-list/email-list.vue';
+  import emailDetails from '../../components/emails/email-details/email-details.vue';
+  import emailStatus from '../../components/emails/email-status/email-status.vue';
+  import moment from 'moment';
 
   export default {
     data() {

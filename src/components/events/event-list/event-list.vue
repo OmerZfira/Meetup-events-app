@@ -1,27 +1,27 @@
 <template>
     <div id='app'>
-        <h1>event-by-day</h1>
-        <event-list></event-list>
+        <h1>Event-list!</h1>
+        <event-preview></event-preview>
     </div>
-</template>
+</template> 
 
 <script>
-    import eventList from '../event-list/event-list.vue';
+    import eventPreview from '../event-preview/event-preview.vue';
     export default {
         data() {
             return {
 
-            }
+            }  
         },
         components: {
-            'event-list': eventList
+            'event-preview': eventPreview
         }
     }
 </script>
 
 <style scoped>
     #app {
-        background: purple;
+        background: blue;
         padding: 50px;
     }
 </style>

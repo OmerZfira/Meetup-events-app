@@ -7,9 +7,9 @@ import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
 import Places from './pages/places/places-center.vue';
+import Emails from './pages/email-center/email-center.vue';
 
 Vue.use(VueRouter);
-
 
 const routes = [{
     path: '/',
@@ -20,12 +20,15 @@ const routes = [{
 }, {
     path: '/about',
     component: About
+}, {
+    path: '/emails',
+    component: Emails
 }]
 
 const router = new VueRouter({
     mode: 'history',
     routes
-})
+});
 
 const app = new Vue({
     router,
@@ -33,3 +36,4 @@ const app = new Vue({
         'main-nav': MainNav
     }
 }).$mount('#app')
+

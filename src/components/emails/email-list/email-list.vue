@@ -11,8 +11,8 @@
     </div>
 </template>
 <script>
-    import emailPreview from './email-preview.vue'
-    import emailFilter from './email-filter.vue'
+    import emailPreview from '../email-preview/email-preview.vue'
+    import emailFilter from '../email-filter/email-filter.vue'
     export default {
         props: {
             emails: {

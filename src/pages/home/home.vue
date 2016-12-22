@@ -11,10 +11,10 @@
 </template>
 
 <script>
-    import eventCenter from '../../components/event-center/event-center.vue';
+    import eventCenter from '../event-center/event-center.vue'; 
     export default {
         data: () => {
-            return {
+            return { 
                 items: []
             }
         },

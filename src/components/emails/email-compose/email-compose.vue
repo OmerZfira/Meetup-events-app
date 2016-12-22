@@ -1,5 +1,5 @@
 <template>
-    <div id='app'>
+    <div>
         <label class="label">Subject</label>
         <p class="control">
             <input class="input" type="text" placeholder="Text input">
