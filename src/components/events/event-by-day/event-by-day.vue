@@ -1,9 +1,9 @@
 <template>
     <div id='app'> 
  
-        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent"><h3>{{key}}</h3></event-list>
+        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent"><h1>{{key}}</h1></event-list>
     </div>
-</template>
+</template> 
 
 <script>
     import eventList from '../event-list/event-list.vue';
@@ -21,22 +21,7 @@
             }
         },
         methods: {
-            // sortArrayByDate() {
-            //     let obj = {};
-            //      this.events = this.events.sort((a, b) => a.time - b.time);
-            //      this.events.forEach( event => {
-            //         let date = moment(event.time).format('DD-MM-YY');
-
-            //         if(obj[date] === undefined) obj[date] = [event];
-            //         else                                    obj[date].push(event);
-
-            //     });
-            //     console.log('obj' , obj);
-            //     return obj;
-            // } 
-            // sortArrayByTime() {
-            //     this.events = this.events.sort((a, b) => a.time - b.time);
-            // }
+             
         },
         computed: {
             eventGruops: function() {
@@ -49,7 +34,6 @@
                     if (eventGruopsData[date] === undefined) eventGruopsData[date] = [event];
                     else eventGruopsData[date].push(event);
                 });
-                console.log('eventsGroups', eventGruopsData);
                 return eventGruopsData;
             }
         },

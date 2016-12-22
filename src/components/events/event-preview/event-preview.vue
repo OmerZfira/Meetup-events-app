@@ -13,19 +13,19 @@
           <img src="http://placehold.it/64x64" alt="Image">
         </figure>
       </div>
-      <div class="media-content">
-        <p class="title is-5">{{event.id}}</p>
-        <p class="subtitle is-6">{{event.id}}</p>
+      <div class="media-content"> 
+        <p class="title is-5">{{event.name}}</p>
+        <p class="subtitle is-6">{{event.status}}</p>
       </div>
     </div>
 
     <div class="content">
         {{event.name}}
       <br>
-      <small>{{new Date(event.time).toTimeString()}}</small>
+      <small>{{event.venue.address_1}}</small>
     </div>
   </div>
-</div>
+</div> 
     </div>
 </template>
 
