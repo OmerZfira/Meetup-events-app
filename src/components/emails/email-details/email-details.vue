@@ -1,10 +1,7 @@
 <template>
     <div class="email-details">
-        <!--<div class="wrapper" v-if="displayedEmail.isUnarchived">-->
             <section class="email-details-header">
-                <button class="btn btn-primary glyphicon glyphicon-arrow-left" @click="replyEmail">&nbsp;<span>Reply</span></button>
-                <button class="btn btn-info glyphicon glyphicon-share-alt" @click="forwardEmail">&nbsp;<span>Forward</span></button>
-                <button class="btn btn-danger glyphicon glyphicon-trash" @click="deleteEmail">&nbsp;<span>Delete</span></button>
+                <button v-show="showDelete" class="button is-small is-danger fa fa-trash-o" @click="deleteEmail">&nbsp;<span></span></button>
             </section>
             <section class="email-details-summary">
                 <hr>
@@ -24,16 +21,21 @@
                 type: Object
             }
         },
+        data() { 
+            return {
+            }
+        },
         methods: {
             deleteEmail() {
-                this.$emit('deleteEmail', this.displayedEmail.id)
-                // this.displayedEmail.isUnarchived = false;
+                this.$emit('deleteEmail', this.displayedEmail.id);
+                this.displayedEmail.isDisplayed = false;
             },
-            replyEmail() {
-                this.$emit('replyEmail', this.displayedEmail.id)
-            },
-            forwardEmail() {
-                this.$emit('forwardEmail', this.displayedEmail.id)
+        },
+        computed: {
+            showDelete() {
+                if(this.displayedEmail.isDisplayed === true) {
+                    return true;
+                }
             }
         }
     }
@@ -41,10 +43,14 @@
 
 <style scoped>
     .email-details {
-        background: #FDFFE7;
-        border: 2px lightgray inset;
+        background: white;
         flex: 3 2 50%;
         padding: 10px;  
+        background-color: black;
+        width: 50%;
+        color: white;
+        opacity: 0.8;
+        height: 100%;
     }
     .wrapper {
         height: 100%;
@@ -59,4 +65,10 @@
     hr {
         width: 90%;
     }
+
+    @media screen and (max-width: 590px){
+        .email-details {
+              width: 100%;
+    }
+}
 </style>

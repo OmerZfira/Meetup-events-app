@@ -8,16 +8,34 @@
   </div>
 
   <div class="nav-center">
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="#">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
+      <router-link to="/" tag="a" active-class="active">
+        <a class="nav-item">Home
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+     </router-link>
+     <router-link to="/emails" tag="a" active-class="active">
+        <a class="nav-item">Emails
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+     </router-link>
+     <router-link to="/events" tag="a" active-class="active">
+        <a class="nav-item">Events
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+     </router-link>
+     <router-link to="/places" tag="a" active-class="active">
+        <a class="nav-item">Places
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+     </router-link>
   </div>
 
   <span class="nav-toggle">
@@ -27,16 +45,6 @@
   </span>
 
   <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
-      Home
-    </a>
-    <a class="nav-item" href="#">
-      About
-    </a>
-    <a class="nav-item" href="#">
-      Blog
-    </a>
-
     <span class="nav-item">
       <a class="button" >
         <span class="icon">
@@ -67,5 +75,5 @@
 </script> 
 
 <style scoped>
-
+  
 </style>
