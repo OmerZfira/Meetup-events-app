@@ -3,20 +3,28 @@
         <section class="wrapper">
             <input class="search" type="text" v-model.lazy="filter.txt" 
                                 @keyup.enter="stringFilter" id="keywords" placeholder="Search">
+            <div>
             <div class="buttons">
-                <label for="all">All</label>
+                
                 <input type="radio" v-model="filter.readStatus" 
                                     @change="stringFilter" 
-                                    :value="all" id="all" />
-                <label for="read">Read</label>
+                                    value= "all"
+                                    id="all"/>
+                <label for="all">All</label>
+                
                 <input type="radio" v-model="filter.readStatus"
                                     @change="stringFilter" 
-                                    :value="true" id="read" />
-                <label for="unread">Unread</label>
+                                    value="true"
+                                    id="read" />
+                <label for="read">Read</label>
+                
                 <input type="radio" v-model="filter.readStatus" 
                                     @change="stringFilter" 
-                                    :value="false" id="unread">
+                                    value="false"
+                                    id="unread">
+                <label for="unread">Unread</label>
             </div>
+             </div>
         </section>
     </div>
 </template>
@@ -26,6 +34,7 @@
             return {
                 filter: {
                     txt: '',
+                    // Because the v-model is filter.readStatus it should start with radiobutton equals to 'all'
                     readStatus: 'all'
                 }
             }
@@ -49,9 +58,16 @@
         font-size: 0.7rem;
         margin-top: -5em;
     }
-    .buttons input,label {
+    input,label {
         cursor: pointer;
     }
+
+    .buttons {
+        cursor: pointer;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
     .wrapper {
         height: 100%;
     }

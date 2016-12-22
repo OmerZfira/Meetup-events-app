@@ -20,7 +20,7 @@
         border: 1px ;
         background-color: #646768;
         display:flex;
-        padding: 5px;
+        padding: 10px;
         justify-content: flex-start;
         align-items: flex-start;
         cursor: pointer;

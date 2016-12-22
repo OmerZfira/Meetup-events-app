@@ -5,8 +5,8 @@
             </section>
             <section class="email-details-summary">
                 <hr>
-                <h3>{{displayedEmail.subject}}</h3>
-                {{displayedEmail.body}}
+                <h1>{{displayedEmail.subject}}</h1>
+                <p>{{displayedEmail.body}}</p>
                 <hr>
             </section>
         </div>
@@ -69,6 +69,10 @@
     @media screen and (max-width: 590px){
         .email-details {
               width: 100%;
+    }
+
+    .email-details-summary > h1{
+        font-size: 100rem;
     }
 }
 </style>

@@ -8,16 +8,13 @@ import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
  
 import Places from './pages/places/places-center.vue';
-Vue.use(VueResource);
-Vue.use(VueRouter);
-
-Vue.http.options.root = 'http://localhost:3003';
-
- 
-
 import Emails from './pages/email-center/email-center.vue';
 import Events from './pages/event-center/event-center.vue';
 
+Vue.http.options.root = 'http://localhost:3003';
+
+Vue.use(VueResource);
+Vue.use(VueRouter);
 
 const routes = [{ 
     path: '/',
