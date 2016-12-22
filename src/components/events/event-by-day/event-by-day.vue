@@ -1,52 +1,67 @@
 <template>
-    <div id='app'>
-        <h1>event-by-day</h1>
-        <event-list></event-list>
+    <div id='app'> 
+ 
+        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent"><h3>{{key}}</h3></event-list>
     </div>
 </template>
 
 <script>
-                    // {
-                    //     id: "1",
-                    //     name: "3 Hours intro session - Fullstack Coding Bootcamp",
-                    //     time: 1483456800000 
-                    // } 
     import eventList from '../event-list/event-list.vue';
+    import moment from 'moment';
+
     export default {
-        props : {
-            events : {
-                type : Array
-            }
-        }
-        data() {
-            return {
-                eventByDay : {
-                    '0' : [] ,
-                    '1' : [] ,
-                    '2' : [] ,
-                    '3' : [] ,
-                    '4' : [] ,
-                    '5' : [] ,
-                    '6' : []
-                }
+        props: {
+            events: {
+
             }
         },
-        methods : {
-            sortArray() {
-                events.forEach( event => {
+        data() {
+            return {
 
+            }
+        },
+        methods: {
+            // sortArrayByDate() {
+            //     let obj = {};
+            //      this.events = this.events.sort((a, b) => a.time - b.time);
+            //      this.events.forEach( event => {
+            //         let date = moment(event.time).format('DD-MM-YY');
+
+            //         if(obj[date] === undefined) obj[date] = [event];
+            //         else                                    obj[date].push(event);
+
+            //     });
+            //     console.log('obj' , obj);
+            //     return obj;
+            // } 
+            // sortArrayByTime() {
+            //     this.events = this.events.sort((a, b) => a.time - b.time);
+            // }
+        },
+        computed: {
+            eventGruops: function() {
+                let eventGruopsData = {};
+                this.events.sort((a, b) => a.time - b.time);
+
+                this.events.forEach(event => {
+                    let date = moment(event.time).format('DD-MM-YY');
+
+                    if (eventGruopsData[date] === undefined) eventGruopsData[date] = [event];
+                    else eventGruopsData[date].push(event);
                 });
+                console.log('eventsGroups', eventGruopsData);
+                return eventGruopsData;
             }
         },
         components: {
             'event-list': eventList
         }
-    } 
+    }
 </script>
 
 <style scoped>
     #app {
-        background: purple;
-        padding: 50px;
+        padding: 10px;
+        overflow-x: scroll;
     }
 </style>

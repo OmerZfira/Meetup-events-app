@@ -1,27 +1,43 @@
 <template>
-    <div id='app'>
-        <h1>Event-list!</h1>
-        <event-preview></event-preview>
-    </div>
-</template> 
+    <div id="app">
+            <slot></slot>
+            <div class="hold-date">
+              <event-preview v-for="event in events" :event="event"></event-preview>
+           </div>
+      </div>
+</template>
 
 <script>
     import eventPreview from '../event-preview/event-preview.vue';
     export default {
+        props: {
+            events: {
+
+            }
+        },
         data() {
             return {
 
-            }  
+            }
         },
         components: {
             'event-preview': eventPreview
+        },
+        mounted() {
+            console.log('events', JSON.parse(JSON.stringify(this.events)));
+
         }
+
     }
 </script>
 
 <style scoped>
     #app {
-        background: blue;
-        padding: 50px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hold-date {
+        display: flex;
     }
 </style>

@@ -1,4 +1,3 @@
-
 <template>
     <div id='app'>
      <div class="card">
@@ -15,30 +14,28 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-5">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
+        <p class="title is-5">{{event.id}}</p>
+        <p class="subtitle is-6">{{event.id}}</p>
       </div>
     </div>
 
     <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
+        {{event.name}}
       <br>
-      <small>11:09 PM - 1 Jan 2016</small>
+      <small>{{new Date(event.time).toTimeString()}}</small>
     </div>
   </div>
 </div>
     </div>
-</template> 
+</template>
 
 <script>
     export default {
         props: {
             event: {
-                type: Object 
+
             }
-        } ,
+        },
         data() {
             return {
 
@@ -49,7 +46,6 @@
 
 <style scoped>
     #app {
-        background: deeppink;
-        padding: 50px;
+        padding: 10px;
     }
 </style>
