@@ -1,9 +1,9 @@
 <template>
   <div class="app">
     <section class="place-content">
-      <place-list  :places="places" @displayPlace="displayPlace" @filter="placeFilter = $event">
+      <place-list v-if="!displayedPlace.venue" :places="places" @displayPlace="displayPlace" @filter="placeFilter = $event">
       </place-list>
-      <place-details v-if="displayedPlace.venue" :displayedPlace="displayedPlace" @deletePlace="deletePlace">
+      <place-details v-else :displayedPlace="displayedPlace" @deletePlace="deletePlace" @closeDetails="closeDetails">
       </place-details>
       <place-map :places="places" :updateMap="updateMap">
 
@@ -30,7 +30,8 @@
               "name": 'this',
               "lat": 32.06399154663086,
               "lng": 34.77415084838867,
-              "tags": ['fun', 'food']
+              "tags": ['fun', 'food'],
+              "type": 'upcoming'
             },
           },
           {
@@ -39,7 +40,8 @@
               "name": "is",
               "lat": 32.02274703979492,
               "lng": 34.77984619140625,
-              "tags": ['work', 'anything']
+              "tags": ['work', 'anything'],
+              "type": 'upcoming'
             },
           },
           {
@@ -48,27 +50,28 @@
               "name": "mapAPI",
               "lat": 32.06999969482422,
               "lng": 34.79000045776367,
-              "tags": ['fun', 'work']
+              "tags": ['fun', 'work'],
+              "type": 'favorites'
             },
           },
         ],
         displayedPlace: {},
-        placeFilter: { readStatus: 'all' },
+        placeFilter: { type: 'all' },
       }
     },
     computed: {
       places() {
-        // if (!this.placeFilter.txt && this.placeFilter.readStatus === 'all') {
+        if (!this.placeFilter.txt && this.placeFilter.type === 'all') {
           return this.placesDB
-        // }
-        // else {
-        //   return this.placesDB.filter(place => {
-        //     return (place.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
-        //       place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
-        //       (this.placeFilter.readStatus === 'all' || place.isRead === this.placeFilter.readStatus)
-        //   });
+        }
+        else {
+          return this.placesDB.filter(place => {
+            return (place.venue.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
+              place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
+              (this.placeFilter.type === 'all' || place.venue.type === this.placeFilter.type)
+          });
 
-        // };
+        };
       }
     },
     methods: {
@@ -81,6 +84,9 @@
             place.venue.isDisplayed = false;
           }
         });
+      },
+      closeDetails() {
+        this.displayedPlace = {};
       },
       deletePlace(placeId) {
         this.placesDB = this.placesDB.filter(place => place.venue.id !== placeId);
