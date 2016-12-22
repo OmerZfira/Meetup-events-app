@@ -21,8 +21,6 @@
 
 <style scoped>
     .email-status {
-        background: #34495D;
-        border: 2px lightgray outset;
         border-radius: 0 0 15px 15px;
         display:flex;
         justify-content: space-between;
