@@ -61,13 +61,14 @@
     },
     computed: {
       places() {
+        console.log('reached computed center');
         if (!this.placeFilter.txt && this.placeFilter.type === 'all') {
           return this.placesDB
         }
         else {
           return this.placesDB.filter(place => {
             return (place.venue.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
-              place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
+              place.venue.tags.join(' ').toLowerCase().includes(this.placeFilter.txt.toLowerCase())) &&
               (this.placeFilter.type === 'all' || place.venue.type === this.placeFilter.type)
           });
 
