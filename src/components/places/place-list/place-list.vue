@@ -1,10 +1,10 @@
 <template>
-    <div class="email-list">
+    <div class="place-list">
         <place-filter @filter="$emit('filter', $event)"></place-filter>
         <hr>
         <ul>
-            <li v-for="email in emails">
-                <place-preview :email="email" @click.native="$emit('displayEmail', email.id)"></place-preview>
+            <li v-for="place in places">
+                <place-preview :place="place" @click.native="$emit('displayPlace', place.venue.id)"></place-preview>
             </li>
         </ul>
     </div>
@@ -12,12 +12,12 @@
 
 <script>
 
-    import placePreview from './place-preview.vue'
-    import placeFilter from './place-filter.vue'
+    import placePreview from '../place-preview/place-preview.vue'
+    import placeFilter from '../place-filter/place-filter.vue'
 
     export default {
         props: {
-            emails: {
+            places: {
                 required: true,
                 type: Array
             }
@@ -30,7 +30,7 @@
 </script>
 
 <style scoped>
-.email-list {
+.place-list {
         border: 1px lightgray outset ;
         flex: 1 1 30%;
         background: #99F0CA;
@@ -39,7 +39,7 @@
         justify-content: flex-start;
         padding: 5px;
 }
-email-filter {
+place-filter {
 
 }
 
