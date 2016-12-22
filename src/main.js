@@ -8,6 +8,7 @@ import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
 import Places from './pages/places/places-center.vue';
 import Emails from './pages/email-center/email-center.vue';
+import Events from './pages/event-center/event-center.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,9 @@ const routes = [{
 }, {
     path: '/emails',
     component: Emails
+}, {
+    path: '/events',
+    component: Events
 }]
 
 const router = new VueRouter({

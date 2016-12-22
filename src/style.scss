@@ -1,2 +1,13 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../node_modules/bulma/css/bulma.css';
+@import '../node_modules/font-awesome/css/font-awesome.css';
+
+html,body {
+    height: 100%;
+    position: relative;
+}
+
+body > div {
+    height: 100%;
+    position: relative;
+}
