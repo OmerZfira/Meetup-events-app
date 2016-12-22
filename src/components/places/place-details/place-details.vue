@@ -2,6 +2,7 @@
     <div class="place-details">
         <div class="wrapper">
             <section class="place-details-header">
+                <button class="btn btn-info" @click="$emit('closeDetails')">&nbsp;<span>Back</span></button>
                 <button class="btn btn-danger glyphicon glyphicon-trash" @click="deletePlace">&nbsp;<span>Delete</span></button>
             </section>
             <section class="place-details-summary">
@@ -38,7 +39,7 @@
 
 <style scoped>
 .place-details {
-    flex: 3 2 50%;
+    flex: 1 1 30%;
     padding: 10px;  
     background: red;
 }
