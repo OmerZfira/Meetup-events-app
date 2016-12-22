@@ -28,18 +28,15 @@
 </script>
 <style scoped>
     .email-list {
-            border: 1px lightgray outset ;
+            border: 1px;
             flex: 1 1 30%;
-            background: #99F0CA;
+            background-color: #ccc1c1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 5px;
+            padding: 13px;
     }
-
-    email-filter {
-
-    }
+    
     hr {
         height:1px;
         background: darkgray;
@@ -56,7 +53,6 @@
     }
 
     li {
-        /*flex: 1 1 40%;*/
         margin: 1px;
     }
 </style>

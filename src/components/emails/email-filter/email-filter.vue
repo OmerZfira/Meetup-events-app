@@ -1,23 +1,30 @@
 <template>
     <div class="email-filter">
         <section class="wrapper">
-            <br>
-            <input  type="text" v-model.lazy="filter.txt" 
-                                @keyup.enter="streamFilter" id="keywords" placeholder="Search">
+            <input class="search" type="text" v-model.lazy="filter.txt" 
+                                @keyup.enter="stringFilter" id="keywords" placeholder="Search">
+            <div>
             <div class="buttons">
+                
+                <input type="radio" v-model="filter.readStatus" 
+                                    @change="stringFilter" 
+                                    value= "all"
+                                    id="all"/>
                 <label for="all">All</label>
-                <input type="radio" v-model="filter.readStatus" 
-                                    @change="streamFilter" 
-                                    :value="all" id="all" />
-                <label for="read">Read</label>
+                
                 <input type="radio" v-model="filter.readStatus"
-                                    @change="streamFilter" 
-                                    :value="true" id="read" />
-                <label for="unread">Unread</label>
+                                    @change="stringFilter" 
+                                    value="true"
+                                    id="read" />
+                <label for="read">Read</label>
+                
                 <input type="radio" v-model="filter.readStatus" 
-                                    @change="streamFilter" 
-                                    :value="false" id="unread">
+                                    @change="stringFilter" 
+                                    value="false"
+                                    id="unread">
+                <label for="unread">Unread</label>
             </div>
+             </div>
         </section>
     </div>
 </template>
@@ -27,12 +34,14 @@
             return {
                 filter: {
                     txt: '',
+                    // Because the v-model is filter.readStatus it should start with radiobutton equals to 'all'
                     readStatus: 'all'
                 }
             }
         },
         methods: {
-            streamFilter() {
+            stringFilter() {
+                // sends the filter object to list
                 this.$emit('filter', this.filter)
             }
         }
@@ -40,16 +49,30 @@
 </script>
 
 <style scoped>
-    .email-filter {
-        min-height: 50px;
-    }
     label {
         font-size: 0.8em;
     }
     input {
-        font-size: 0.6em;
+        border-radius: 6px;
+        padding: 5px;
+        font-size: 0.7rem;
+        margin-top: -5em;
     }
-    .buttons input,label {
+    input,label {
         cursor: pointer;
+    }
+
+    .buttons {
+        cursor: pointer;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .wrapper {
+        height: 100%;
+    }
+
+    .search {
+        width: 100%;
     }
 </style>

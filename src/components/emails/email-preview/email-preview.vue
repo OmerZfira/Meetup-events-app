@@ -1,6 +1,5 @@
 <template>
-    <div class="email-preview" :class="{unMarked: email.isRead, displayed: email.isDisplayed}">
-        <img :src="imgUrl" alt="mail-icon" />
+    <div class="email-preview" :class="{isRead: email.isRead, currEmail: email.isDisplayed}">
         <h4>   {{email.subject}}</h3>
     </div>
 </template>
@@ -13,35 +12,34 @@
                 type: Object
             }
         },
-        computed: {
-            imgUrl() {
-                return (this.email.isRead) ? './src/assets/mail-read.png' : './src/assets/mail.png';
-            }
-        },
     }
 </script>
 
 <style scoped>
     .email-preview {
-        border: 1px lightgray outset ;
-        background: #7aebba;
+        border: 1px ;
+        background-color: #646768;
         display:flex;
-        padding: 5px;
+        padding: 10px;
         justify-content: flex-start;
         align-items: flex-start;
         cursor: pointer;
+        color: white;
+        font-weight: bold;
     }
 
     img {
         max-height: 30px;
     }
 
-    .unMarked>h4 {
+    .isRead {
         font-weight: normal;
+        color: grey;
+        background-color: #3a4144;
     }
 
-    .displayed {
-        background: #FDFFE7;
-        border: 2px lightgray inset ;
+    .currEmail {
+        border: 2px solid yellow ;
+        
     }
 </style>

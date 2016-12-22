@@ -1,4 +1,3 @@
-
 <template>
     <div id='app'>
      <div class="card">
@@ -14,31 +13,29 @@
           <img src="http://placehold.it/64x64" alt="Image">
         </figure>
       </div>
-      <div class="media-content">
-        <p class="title is-5">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
+      <div class="media-content"> 
+        <p class="title is-5">{{event.name}}</p>
+        <p class="subtitle is-6">{{event.status}}</p>
       </div>
     </div>
 
     <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
+        {{event.name}}
       <br>
-      <small>11:09 PM - 1 Jan 2016</small>
+      <small>{{event.venue.address_1}}</small>
     </div>
   </div>
-</div>
+</div> 
     </div>
-</template> 
+</template>
 
 <script>
     export default {
         props: {
             event: {
-                type: Object 
+
             }
-        } ,
+        },
         data() {
             return {
 
@@ -49,7 +46,6 @@
 
 <style scoped>
     #app {
-        background: deeppink;
-        padding: 50px;
+        padding: 10px;
     }
 </style>

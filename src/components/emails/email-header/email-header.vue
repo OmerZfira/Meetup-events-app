@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-        <h3>Your messages</h3>
-        <button class="btn btn-success glyphicon glyphicon-pencil" @click="composeEmail">&nbsp;<span>Compose</span></button>
+        <h3>INBOX</h3>
+        <button class="compose" @click="composeEmail">COMPOSE</button>
     </div>
 </template>
 
@@ -14,6 +14,7 @@
         methods: {
             composeEmail() {
                 
+                this.$emit('composeEmail')
             }
         }
     }
@@ -22,7 +23,7 @@
 <style scoped>
 .header {
     border-radius: 15px 15px 0 0;
-    background: #34495D;
+    background: #3a4144;
     padding: 5px;
     display: flex;
     justify-content: space-between;
@@ -32,5 +33,18 @@
 .btn-success {
     height: 35px;
     align-self: flex-end;
+}
+
+h3{
+    margin: 1em;
+    font-size: 1rem;
+}
+
+.compose{
+    color: #3a4144;
+    font-size: 0.8rem;
+    margin: 1em;
+    width: 100px;
+    height: 20px;
 }
 </style>

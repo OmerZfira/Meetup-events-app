@@ -1,52 +1,51 @@
 <template>
-    <div id='app'>
-        <h1>event-by-day</h1>
-        <event-list></event-list>
+    <div id='app'> 
+ 
+        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent"><h1>{{key}}</h1></event-list>
     </div>
-</template>
+</template> 
 
 <script>
-                    // {
-                    //     id: "1",
-                    //     name: "3 Hours intro session - Fullstack Coding Bootcamp",
-                    //     time: 1483456800000 
-                    // } 
     import eventList from '../event-list/event-list.vue';
+    import moment from 'moment';
+
     export default {
-        props : {
-            events : {
-                type : Array
+        props: {
+            events: {
+
             }
         },
         data() {
             return {
-                eventByDay : {
-                    '0' : [] ,
-                    '1' : [] ,
-                    '2' : [] ,
-                    '3' : [] ,
-                    '4' : [] ,
-                    '5' : [] ,
-                    '6' : []
-                }
+
             }
         },
-        methods : {
-            sortArray() {
-                events.forEach( event => {
+        methods: {
+             
+        },
+        computed: {
+            eventGruops: function() {
+                let eventGruopsData = {};
+                this.events.sort((a, b) => a.time - b.time);
 
+                this.events.forEach(event => {
+                    let date = moment(event.time).format('DD-MM-YY');
+
+                    if (eventGruopsData[date] === undefined) eventGruopsData[date] = [event];
+                    else eventGruopsData[date].push(event);
                 });
+                return eventGruopsData;
             }
         },
         components: {
             'event-list': eventList
         }
-    } 
+    }
 </script>
 
 <style scoped>
     #app {
-        background: purple;
-        padding: 50px;
+        padding: 10px;
+        overflow-x: scroll;
     }
 </style>
