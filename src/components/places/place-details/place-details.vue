@@ -1,13 +1,13 @@
 <template>
     <div class="place-details">
-        <div class="wrapper" v-if="displayedPlace.isUnarchived">
+        <div class="wrapper">
             <section class="place-details-header">
                 <button class="btn btn-danger glyphicon glyphicon-trash" @click="deletePlace">&nbsp;<span>Delete</span></button>
             </section>
             <section class="place-details-summary">
             <hr>
-                <h3>{{displayedPlace.subject}}</h3>
-                {{displayedPlace.body}}
+                <h3>{{displayedPlace.venue.name}}</h3>
+                {{displayedPlace.venue.lat}}
             <hr>
             </section>
             <section class="place-details-footer">
@@ -28,7 +28,7 @@
         },
         methods: {
             deletePlace() {
-                this.$emit('deletePlace', this.displayedPlace.id)
+                this.$emit('deletePlace', this.displayedPlace.venue.id)
                 this.displayedPlace.isUnarchived = false;
             },
         }

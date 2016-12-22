@@ -1,6 +1,6 @@
 <template>
-    <div class="place-preview" :class="{unMarked: place.isRead, displayed: place.isDisplayed}">
-        <h4>&#187; {{place.subject}}</h3>
+    <div class="place-preview">
+        <h4>&#187; {{place.venue.name}}</h3>
     </div>
 </template>
 

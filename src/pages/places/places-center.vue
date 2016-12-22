@@ -1,11 +1,11 @@
 <template>
   <div class="app">
     <section class="place-content">
-      <place-list v-if="1" :places="places" @displayPlace="displayPlace" @filter="placeFilter = $event">
+      <place-list  :places="places" @displayPlace="displayPlace" @filter="placeFilter = $event">
       </place-list>
-      <place-details v-else :displayedPlace="displayedPlace" @deletePlace="deletePlace">
+      <place-details v-if="displayedPlace.venue" :displayedPlace="displayedPlace" @deletePlace="deletePlace">
       </place-details>
-      <place-map :places="places">
+      <place-map :places="places" :updateMap="updateMap">
 
       </place-map>
 
@@ -58,32 +58,33 @@
     },
     computed: {
       places() {
-        if (!this.placeFilter.txt && this.placeFilter.readStatus === 'all') {
+        // if (!this.placeFilter.txt && this.placeFilter.readStatus === 'all') {
           return this.placesDB
-        }
-        else {
-          return this.placesDB.filter(place => {
-            return (place.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
-              place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
-              (this.placeFilter.readStatus === 'all' || place.isRead === this.placeFilter.readStatus)
-          });
+        // }
+        // else {
+        //   return this.placesDB.filter(place => {
+        //     return (place.name.toLowerCase().includes(this.placeFilter.txt.toLowerCase()) ||
+        //       place.tags.toLowerCase().join(' ').includes(this.placeFilter.txt.toLowerCase())) &&
+        //       (this.placeFilter.readStatus === 'all' || place.isRead === this.placeFilter.readStatus)
+        //   });
 
-        };
+        // };
       }
     },
     methods: {
       displayPlace(placeId) {
         this.places.forEach(place => {
-          if (place.id === placeId) {
-            place.isDisplayed = true;
+          if (place.venue.id === placeId) {
+            place.venue.isDisplayed = true;
             this.displayedPlace = place;
           } else {
-            place.isDisplayed = false;
+            place.venue.isDisplayed = false;
           }
         });
       },
       deletePlace(placeId) {
-        this.placesDB = this.placesDB.filter(place => place.id !== placeId);
+        this.placesDB = this.placesDB.filter(place => place.venue.id !== placeId);
+        this.displayedPlace = {};
       },
     },
     components: {
