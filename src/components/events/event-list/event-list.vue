@@ -2,7 +2,7 @@
     <div id="app">
             <slot></slot>
             <div class="hold-date">
-              <event-preview v-for="event in events" :event="event"></event-preview>
+              <event-preview v-for="event in events" :event="event" @click.native=""></event-preview>
            </div>
       </div>
 </template>
@@ -20,14 +20,12 @@
 
             }
         },
+        methods :{
+            
+        } ,
         components: {
             'event-preview': eventPreview
-        },
-        mounted() {
-            console.log('events', JSON.parse(JSON.stringify(this.events)));
-
         }
-
     }
 </script>
 
