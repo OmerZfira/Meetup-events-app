@@ -4,7 +4,7 @@
         <hr>
         <ul>
             <li v-for="place in places">
-                <place-preview :place="place" @click.native="$emit('displayPlace', place.id)"></place-preview>
+                <place-preview :place="place" @click.native="$emit('displayPlace', place.venue.id)"></place-preview>
             </li>
         </ul>
     </div>
