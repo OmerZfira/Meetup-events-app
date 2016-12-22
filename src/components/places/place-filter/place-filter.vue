@@ -1,5 +1,5 @@
 <template>
-    <div class="email-filter">
+    <div class="place-filter">
         <section class="wrapper">
             <label for="keywords" style="margin-bottom:0">Search by:</label>
             <br>
@@ -44,7 +44,7 @@
 </script>
 
 <style scoped>
-.email-filter {
+.place-filter {
     min-height: 50px;
 }
 
