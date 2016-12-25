@@ -1,0 +1,26 @@
+<div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+        <div class="content">
+            <p class="title">{{eventDetails.name}}</p>
+            <p class="subtitle" v-html="eventDetails.description"></p>
+            <div class="content">
+                {{eventDetails.link}}
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a class="button is-primary">
+      Save changes
+    </a>
+                    </p>
+                    <p class="control" @click="$emit('closeDetails')">
+                        <a class="button">
+      Cancel
+    </a>
+                    </p>
+                    <p class="control">
+                        <a class="button is-danger">
+      Delete event
+    </a>
+                    </p>
+                </div>
+            </div>
+        </div>

@@ -7,8 +7,8 @@ import Toastr from 'vue-toastr';
 import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
- 
 import Places from './pages/places-center/places-center.vue';
+
 import Emails from './pages/email-center/email-center.vue';
 import Events from './pages/event-center/event-center.vue';
 
@@ -44,4 +44,3 @@ const app = new Vue({
         'main-nav': MainNav,
     }
 }).$mount('#app')
-

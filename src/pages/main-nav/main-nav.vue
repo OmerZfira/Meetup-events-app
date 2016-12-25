@@ -75,8 +75,7 @@
   font-weight: bold;
   font-size: 30px;
   font-family: arial, helvetica;
-  text-align: center;
-      
+  text-align: center; 
   }
 
   .nav-center {
