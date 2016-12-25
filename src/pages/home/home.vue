@@ -4,7 +4,6 @@
         <div class="jumbotron">
           <h1>CodingAcademy Vue JS</h1>
           <p>Only for badass developers</p>
-            <event-center></event-center>
         </div>
       </div>
     </div>
