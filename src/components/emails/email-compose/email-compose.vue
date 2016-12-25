@@ -22,7 +22,7 @@
         },
         methods: {
             saveEmail() {
-                this.$http.post('add', this.email);
+                this.$http.post('addemail', this.email);
                 this.$emit('emailSent', this.email);
             },
         }

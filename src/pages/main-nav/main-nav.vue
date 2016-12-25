@@ -3,7 +3,7 @@
 <nav class="nav">
   <div class="nav-left">
     <a class="nav-item is-brand" href="#">
-      <h1>Meetup-Yours</h1>
+      <h1>Appsus</h1>
     </a>
   </div>
 

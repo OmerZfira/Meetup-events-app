@@ -1,6 +1,6 @@
 <template>
     <div class="place-preview">
-        <h4>&#187; {{place.venue.name}}</h3>
+        <h4>{{place.name}}</h4>
     </div>
 </template>
 
@@ -17,10 +17,10 @@
 
 <style scoped>
     .place-preview {
-        border: 1px lightgray outset ;
-        background: #7aebba;
+        border: 1px;
+        background-color: white;
         display:flex;
-        padding: 5px;
+        padding: 10px;
         justify-content: flex-start;
         align-items: flex-start;
         cursor: pointer;
@@ -30,12 +30,4 @@
         max-height: 30px;
     }
 
-    .unMarked>h4 {
-        font-weight: normal;
-    }
-
-    .displayed {
-        background: #FDFFE7;
-        border: 2px lightgray inset ;
-    }
 </style>
