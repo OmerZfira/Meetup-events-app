@@ -7,17 +7,17 @@
                                 @keyup.enter="streamFilter" id="keywords" placeholder="Search" size="20">
             <div class="buttons">
                 <label for="all">All</label>
-                <input type="radio" v-model="filter.readStatus" 
+                <input type="radio" v-model="filter.type" 
                                     @change="streamFilter" 
                                     value="all" id="all" />
-                <label for="read">Read</label>
-                <input type="radio" v-model="filter.readStatus"
+                <label for="favorites">Favorites</label>
+                <input type="radio" v-model="filter.type"
                                     @change="streamFilter" 
-                                    :value="true" id="read" />
-                <label for="unread">Unread</label>
-                <input type="radio" v-model="filter.readStatus" 
+                                    value="favorites" id="favorites" />
+                <label for="upcoming">Upcoming</label>
+                <input type="radio" v-model="filter.type" 
                                     @change="streamFilter" 
-                                    :value="false" id="unread">
+                                    value="upcoming" id="upcoming">
             </div>
         </section>
     </div>
@@ -31,7 +31,7 @@
             return {
                 filter: {
                     txt: '',
-                    readStatus: 'all'
+                    type: 'all'
                 }
             }
         },
