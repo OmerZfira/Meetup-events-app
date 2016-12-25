@@ -10,9 +10,9 @@
             </p>
             <label class="label">venue</label>
             <p class="control flex">
-                country : <input type="text" v-model="newEvent.venue.country"> 
-                city    : <input type="text" v-model="newEvent.venue.city">
-                adress  : <input type="text" v-model="newEvent.venue.adress">   
+                country : <input type="text" v-model="newEvent.venue.country" placeholder="country"> 
+                city    : <input type="text" v-model="newEvent.venue.city" placeholder="city">
+                adress  : <input type="text" v-model="newEvent.venue.adress" placeholder="adress">   
             </p>
             <label class="label">Status</label>
             <p class="control flex-center">
@@ -36,9 +36,8 @@
             </p>
             <p class="control flex-center">
             <button class="button is-primary" @click="addEvent">Save</button>
-            <button class="button is-link">Cancel</button>
+            <button class="button is-link" @click="$emit('closeAddMode')">Cancel</button>
             </p>
-            {{newEvent}}
     </div>
 </template>
 
@@ -63,13 +62,23 @@
         } ,
         methods : {
             addEvent() {
-                this.$http.post('addEvent' , this.newEvent).then(res => console.log(res));
-            } 
+                this.$http.post('addEvent' , this.newEvent)
+                .then(res => res.json())
+                .then(event => this.updateEvents(event));
+            } ,
+            updateEvents(eventObj){
+                this.$emit('eventAdded' , eventObj);
+            } ,
+
         } 
     }
 </script>
 
 <style scoped>
+.control.flex {
+    color : black;
+    font-size: 1.4em;
+}
  .flex {
     display: flex;
     justify-content: space-between;
@@ -78,5 +87,9 @@
  .flex-center {
     display: flex;
     justify-content: center;
+ } 
+ .label {
+     font-size : 1.5em;
+     color : #4A4A4A;
  }
 </style>

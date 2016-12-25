@@ -27,7 +27,6 @@ app.get('/emails', (req, res) => {
 
 // Get LIST of places
 app.get('/places', (req, res) => {
-    console.log('some one call me!');
     res.json(places.places);
 })
 
@@ -43,13 +42,13 @@ app.delete('/item/:id', (req, res) => {
     const id = +req.params.id;
     emails.emails = emails.emails.filter(currEmail => currEmail.id !== id);
     res.end('the delete was succsesful!');
-})
+});
 
 
 
 // CREATE
 app.post('/addEvent', (req, res) => {
-    let dateString = req.body.date + ' ' + req.body.hour;
+    let dateString = reverseDateStr(req.body.date) + ' ' + req.body.hour;
     let event = {};
     event.id = randomId();
     event.name = req.body.name;
@@ -57,16 +56,10 @@ app.post('/addEvent', (req, res) => {
     event.venue = req.body.venue;
     event.status = req.body.status;
     event.link = req.body.link;
-    console.log('time step : ', getTimestep(dateString));
     event.time = getTimestep(dateString);
-
+    events.events.push(event);
+    res.json(event);
 });
-// const item = {}
-// item.id = findNextId();
-// item.price = req.body.price;
-// item.title = req.body.title;
-// item.description = req.body.description;
-// items.push(item);
 
 // CREATE email
 app.post('/addemail', (req, res) => {
@@ -98,12 +91,17 @@ function randomId() {
 }
 
 function getTimestep(dateString) {
-    // var dateString = '17-09-2013 10:08',
     dateTimeParts = dateString.split(' '),
         timeParts = dateTimeParts[1].split(':'),
         dateParts = dateTimeParts[0].split('-'),
         date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
     return date.getTime()
+}
+
+function reverseDateStr(str) {
+    let strArray = str.split('-');
+    let reversStr = strArray[2] + '-' + strArray[1] + '-' + strArray[0];
+    return reversStr;
 }
 // TODO: UPDATE 
 
@@ -121,10 +119,9 @@ app.post('/addplace', (req, res) => {
     place.tags = req.body.tags;
     places.places.push(place);
     res.end('add!');
-})
+});
 
 app.put('/updateEvent', (req, res) => {
-    console.log('req ID', req.body.id);
     events.events.forEach(event => {
         if (event.id === req.body.id) {
             if (req.body.link !== undefined) {
@@ -146,7 +143,7 @@ app.put('/updateEvent', (req, res) => {
 
 app.listen(3003, () => {
     console.log('REST API listening on port 3003!')
-})
+});
 
 function findNextId() {
     var maxId = 0;

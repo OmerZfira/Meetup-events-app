@@ -1,8 +1,6 @@
 <template>
     <div id='app'>
-     <h1>Event-center!</h1> 
-
-    <label class="label">filter by -</label>
+    <label class="label">filter</label>
         <p class="control flex-center">
         <span class="select">
             <select @click="filterName=''" v-model="filterType">
@@ -13,13 +11,16 @@
         </span>
         <input v-if="filterType === 'Name' || filterType === 'Venue'" type="text" v-model="filterName" :placeholder="placeHolderName">
         <input v-else type="date" v-model="filterName" :placeholder="placeHolderName">
+        <a class="button is-success" @click="isInAddEventMode = true">
+        <i class="fa fa-plus" aria-hidden="true"></i> Add event</a>
+        <a v-show="isInAddEventMode === true" class="button is-warning is-active" @click="isInAddEventMode = false">
+        <i class="fa fa-undo" aria-hidden="true"></i>back</a>
+        <h1 v-show="numOfResult !== 0" class="result">find : {{numOfResult}} results.</h1>
         </p>
 
      
-        <a class="button is-success is-large" @click="isInAddEventMode = !isInAddEventMode">Add event</a>
-        <h1 class="result">find : {{numOfResult}} results.</h1>
         <template v-if="isInAddEventMode">
-            <event-add></event-add>
+            <event-add @eventAdded="addEvent" @closeAddMode="isInAddEventMode = false"></event-add>
         </template>
         <template v-else>
             <event-details v-if="showDetails" :eventDetails="eventDetails" @closeDetails="showDetails = false"></event-details>
@@ -66,6 +67,10 @@
             sendDetails(event) { 
                 this.eventDetails = event;
                 this.showDetails = true
+            } ,
+            addEvent(event){
+                this.events.push(event);
+                this.isInAddEventMode = false;
             } 
         }, 
         computed : {
@@ -105,7 +110,7 @@
                             return this.events;
                     } else {
                         let filterArray = this.events.filter(event => {
-                            return event.venue.city.toLowerCase().includes(this.filterName);
+                            return event.venue.city.toLowerCase().includes(this.filterName.toLowerCase());
                         });  
                         this.numOfResult = filterArray.length;     
                         return filterArray;
@@ -126,6 +131,7 @@
     .result {
         color: black;
         font-size : 2em;
+        text-align: center;
     }
     .flex-center {
         display:flex;
