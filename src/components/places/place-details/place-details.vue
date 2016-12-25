@@ -3,12 +3,12 @@
         <div class="wrapper">
             <section class="place-details-header">
                 <button class="btn btn-info" @click="$emit('closeDetails')">&nbsp;<span>Back</span></button>
-                <button class="btn btn-danger glyphicon glyphicon-trash" @click="deletePlace">&nbsp;<span>Delete</span></button>
+                <button v-show="showDelete" class="button is-small is-danger fa fa-trash-o" @click="deletePlace">&nbsp;</button>
             </section>
             <section class="place-details-summary">
             <hr>
-                <h3>{{displayedPlace.venue.name}}</h3>
-                {{displayedPlace.venue.lat}}
+                <h3>{{displayedPlace.name}}</h3>
+                {{displayedPlace.lat}}
             <hr>
             </section>
             <section class="place-details-footer">
@@ -29,9 +29,18 @@
         },
         methods: {
             deletePlace() {
-                this.$emit('deletePlace', this.displayedPlace.venue.id)
+                this.$emit('deletePlace', this.displayedPlace.id)
                 this.displayedPlace.isUnarchived = false;
             },
+        },
+        computed: {
+            computed: {
+                showDelete() {
+                    if(this.displayedPlace.isDisplayed === true) {
+                        return true;
+                    }
+                }
+            }
         }
     }
 

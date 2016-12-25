@@ -1,5 +1,6 @@
 var events = require('./eventsData.js');
 var emails = require('./emailsData.js');
+var places = require('./placesData.js');
 const express = require('express')
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -22,6 +23,12 @@ app.get('/events', (req, res) => {
 app.get('/emails', (req, res) => {
     console.log('some one call me!');
     res.json(emails.emails);
+})
+
+// Get LIST of places
+app.get('/places', (req, res) => {
+    console.log('some one call me!');
+    res.json(places.places);
 })
 
 // READ
@@ -62,7 +69,7 @@ app.post('/addEvent', (req, res) => {
 // items.push(item);
 
 // CREATE email
-app.post('/add', (req, res) => {
+app.post('/addemail', (req, res) => {
     console.log('req', req.body);
 
     let email = {}
@@ -99,6 +106,22 @@ function getTimestep(dateString) {
     return date.getTime()
 }
 // TODO: UPDATE 
+
+// CREATE place
+app.post('/addplace', (req, res) => {
+    console.log('req', req.body);
+
+    let place = {}
+    place.id = findNextId();
+    place.name = req.body.name;
+    place.latitude = req.body.latitude;
+    place.longitude = req.body.longitude;
+    place.isDisplayed = false;
+    place.type = req.body.type;
+    place.tags = req.body.tags;
+    places.places.push(place);
+    res.end('add!');
+})
 
 app.put('/updateEvent', (req, res) => {
     console.log('req ID', req.body.id);

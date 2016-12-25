@@ -30,13 +30,13 @@
                 if (this.places.length > 0) {
                     this.places.forEach(place => {
                         var infowindow = new google.maps.InfoWindow();
-                        infowindow.setContent('<div class="infoWin"><br><strong>' + place.venue.name + '</strong><br>' +
-                            'Place ID: ' + place.venue.id + '<br>' +
-                            place.venue.tags + '</div>');
+                        infowindow.setContent('<div class="infoWin"><br><strong>' + place.name + '</strong><br>' +
+                            'Place ID: ' + place.id + '<br>' +
+                            place.tags + '</div>');
                         infowindow.setOptions({disableAutoPan: true})
                         let latlangs = {};
-                        latlangs.lat = place.venue.lat;
-                        latlangs.lng = place.venue.lng;
+                        latlangs.lat = place.lat;
+                        latlangs.lng = place.lng;
                         let marker = new google.maps.Marker({
                             position: latlangs,
                             map: map
@@ -60,12 +60,12 @@
                 if (this.places.length > 0) {
                     this.places.forEach(place => {
                         var infowindow = new google.maps.InfoWindow();
-                        infowindow.setContent('<div class="infoWin"><strong>' + place.venue.name + '</strong><br>' +
-                            'Place ID: ' + place.venue.id + '<br>' +
-                            place.venue.tags + '</div>');
+                        infowindow.setContent('<div class="infoWin"><strong>' + place.name + '</strong><br>' +
+                            'Place ID: ' + place.id + '<br>' +
+                            place.tags + '</div>');
                         let latlangs = {};
-                        latlangs.lat = place.venue.lat;
-                        latlangs.lng = place.venue.lng;
+                        latlangs.lat = place.lat;
+                        latlangs.lng = place.lng;
                         let marker = new google.maps.Marker({
                             position: latlangs,
                             map: map

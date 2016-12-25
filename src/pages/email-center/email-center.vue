@@ -39,7 +39,7 @@
         displayedEmail: {},
         shouldshowDetails: true,
         unreadEmailsCounter: 0,
-        emailFilter: {txt:'', readStatus: 'all'},
+        emailFilter: {txt:'', readStatus: 'all'}
       }
     },
     methods: {
