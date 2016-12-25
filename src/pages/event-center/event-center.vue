@@ -1,8 +1,23 @@
 <template>
     <div id='app'>
      <h1>Event-center!</h1> 
-        <input type="text" v-model="filterName">
+
+    <label class="label">filter by -</label>
+        <p class="control flex-center">
+        <span class="select">
+            <select @click="filterName=''" v-model="filterType">
+                <option>Name</option>
+                <option>Time</option>
+                <option>Venue</option>
+            </select>
+        </span>
+        <input v-if="filterType === 'Name' || filterType === 'Venue'" type="text" v-model="filterName" :placeholder="placeHolderName">
+        <input v-else type="date" v-model="filterName" :placeholder="placeHolderName">
+        </p>
+
+     
         <a class="button is-success is-large" @click="isInAddEventMode = !isInAddEventMode">Add event</a>
+        <h1 class="result">find : {{numOfResult}} results.</h1>
         <template v-if="isInAddEventMode">
             <event-add></event-add>
         </template>
@@ -18,6 +33,7 @@
     import EventByDay from '../../components/events/event-by-day/event-by-day.vue';
     import eventDetails from '../../components/events/event-details/event-details.vue';
     import eventAdd from '../../components/events/event-add/event-add.vue';
+    import moment from 'moment';
 
 
     export default {
@@ -27,7 +43,10 @@
                 eventDetails : {} ,
                 showDetails : false ,
                 isInAddEventMode : false ,
-                filterName : ''
+                filterName : '' ,
+                numOfResult : 0 ,
+                filterType : 'Name' ,
+                placeHolderName : 'Name'
             }
         },
         components: {
@@ -51,15 +70,48 @@
         }, 
         computed : {
             filterEvent() {
-                if (this.filterName === '') {
-                    return this.events;
-                } else {
-                    let filterArray = this.events.filter(event => {
-                        return event.name.includes(this.filterName);
-                    });        
-                    return filterArray;
-                } 
-            }
+                // by name
+                if(this.filterType === 'Name'){
+                    this.placeHolderName = 'find by name ...';
+                    if (this.filterName === '') {
+                        this.numOfResult = 0;
+                        return this.events;
+                    } else {
+                        let filterArray = this.events.filter(event => {
+                            return event.name.includes(this.filterName);
+                        });   
+                        this.numOfResult = filterArray.length;     
+                        return filterArray;
+                    }    
+                    // by date 
+                } else if (this.filterType === 'Time') {
+                        if (this.filterName === '') {
+                            this.numOfResult = 0;
+                            return this.events;
+                    }  else {
+                        let filterArray = this.events.filter(event => {
+                                 let date = moment(event.time).format('YY-MM-DD');
+                                 let filterDate = this.filterName.slice(2);
+                                 return date === filterDate;
+                            });   
+                        this.numOfResult = filterArray.length;     
+                        return filterArray;
+                    }
+                    // by venue
+                } else if (this.filterType === 'Venue') {
+                        this.placeHolderName = 'find by city ...';
+                        if (this.filterName === '') {
+                            this.numOfResult = 0;
+                            return this.events;
+                    } else {
+                        let filterArray = this.events.filter(event => {
+                            return event.venue.city.toLowerCase().includes(this.filterName);
+                        });  
+                        this.numOfResult = filterArray.length;     
+                        return filterArray;
+                    }  
+                }
+            } 
         },
         created() {
             this.reloadEvents();
@@ -70,5 +122,13 @@
 <style scoped>
     #app {
         padding: 10px;
+    } 
+    .result {
+        color: black;
+        font-size : 2em;
+    }
+    .flex-center {
+        display:flex;
+        justify-content: center;
     }
 </style>
