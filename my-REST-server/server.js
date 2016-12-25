@@ -51,13 +51,25 @@ app.post('/add', (req, res) => {
 
 // TODO: UPDATE 
 
-app.put('/price', (req, res) => {
-    const id = req.body.id;
-    const newPrice = req.body.newPrice;
-    const index = items.findIndex(item => item.id === id);
-    items[index].price = newPrice;
-    res.end(`the price of item id : ${id} was change to ${newPrice}`);
+app.put('/updateEvent', (req, res) => {
+    console.log('req ID', req.body.id);
+    events.events.forEach(event => {
+        if (event.id === req.body.id) {
+            event.name = req.body.name;
+            event.status = req.body.status;
+            event.venue.address_1 = req.body.address_1;
+        }
+    });
+    res.end('events has change!');
 });
+
+// app.put('/price', (req, res) => {
+//     const id = req.body.id;
+//     const newPrice = req.body.newPrice;
+//     const index = items.findIndex(item => item.id === id);
+//     items[index].price = newPrice;
+//     res.end(`the price of item id : ${id} was change to ${newPrice}`);
+// });
 
 app.listen(3003, () => {
     console.log('REST API listening on port 3003!')
