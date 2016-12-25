@@ -11,7 +11,7 @@
         </span>
         <input v-if="filterType === 'Name' || filterType === 'Venue'" type="text" v-model="filterName" :placeholder="placeHolderName">
         <input v-else type="date" v-model="filterName" :placeholder="placeHolderName">
-        <a class="button is-success" @click="isInAddEventMode = true">
+        <a class="button is-success" @click="isInAddEventMode = true; filterName = ''">
         <i class="fa fa-plus" aria-hidden="true"></i> Add event</a>
         <a v-show="isInAddEventMode === true" class="button is-warning is-active" @click="isInAddEventMode = false">
         <i class="fa fa-undo" aria-hidden="true"></i>back</a>

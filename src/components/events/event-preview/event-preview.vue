@@ -2,9 +2,7 @@
     <div id='app'>
      <div class="card">
      <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="http://placehold.it/300x225" alt="">
-    </figure>
+     <event-map :event="event"></event-map>
   </div>
   <div class="card-content">
     <div class="media"> 
@@ -40,6 +38,7 @@
 </template>
    
 <script>
+  import eventMap from '../event-map/event-map.vue';
     export default {
         props: {
             event: {
@@ -70,7 +69,10 @@
                   adress : this.event.address_1 
                  }
               } 
-            }
+            } ,
+            components: {
+              'event-map' : eventMap
+            } 
         }
 </script>
 
@@ -80,7 +82,6 @@
     }
     .card {
       height: 100%;
-      cursor: pointer;
     }
     .down-prev {
       display: flex;
