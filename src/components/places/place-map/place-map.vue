@@ -2,11 +2,10 @@
     <div class="place-map">
         <div>
             <span style="display:none;"> {{places}}</span>
-<div class="map" ref="map">
-
-</div>
-</div>
-</div>
+            <div class="map" ref="map">
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -82,18 +81,16 @@
             });
             console.log('updated map');
         }
-
     }
 </script>
 
 <style scoped>
-.place-map {
-    flex: 1 1 50%;
-}
- .map {
-    height: 300px;
-}
-.infoWin {
-}
-
+    .place-map {
+        flex: 1 1 50%;
+    }
+    .map {
+        height: 300px;
+    }
+    .infoWin {
+    }
 </style>
