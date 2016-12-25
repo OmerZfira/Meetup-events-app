@@ -18,6 +18,9 @@
      </router-link>
      <router-link to="/events" tag="a" active-class="active">
         <a class="nav-item">Events
+          <span class="icon"></span>
+            <i class="fa fa-rocket"></i>
+          </span>
         </a>
      </router-link>
      <router-link to="/places" tag="a" active-class="active">
@@ -55,7 +58,7 @@
 </nav>
     </div> 
 </template>
-
+ 
 <script>
     export default {
         data() { 

@@ -1,13 +1,16 @@
 <template>
     <div id='home'>
       <div class="container">
+        <div class="jumbotron">
+          <h1>CodingAcademy Vue JS</h1>
+          <p>Only for badass developers</p>
+        </div>
           <h1>Welcome to your meetup organizer!</h1>
-          
           <router-link to="/events">
             <a class="closeEvents">View your closest events...</a>
           </router-link>
       </div>
-    </div>
+    </div> 
 </template>
 
 <script>

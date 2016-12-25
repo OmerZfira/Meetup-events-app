@@ -11,10 +11,12 @@
                   <i class="fa fa-pencil" aria-hidden="true"></i> Edit
               </a>
           </p>
-          <p class="control" v-show="isInEditMode" @click="updateDetails">
+          <p class="control"  v-show="isInEditMode" @click="updateDetails">
+          <router-link to="/about">     
               <a class="button is-info is-outlined">
                   <i class="fa fa-pencil" aria-hidden="true"></i>Save
-              </a>
+              </a> 
+          </router-link>
           </p>
         </div>
         <div class="tile is-ancestor">
