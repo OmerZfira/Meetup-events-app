@@ -1,7 +1,7 @@
 <template>
     <div id='app'> 
  
-        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent"><h1>{{key}}</h1></event-list>
+        <event-list v-for="(currEvent , key) in eventGruops" :events="currEvent" @sendDetails="$emit('sendDetails' , $event)"><h1>{{key}}</h1></event-list>
     </div>
 </template> 
 

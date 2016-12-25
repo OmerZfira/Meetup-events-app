@@ -6,15 +6,13 @@ import VueResource from 'vue-resource'
 import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
- 
 import Places from './pages/places/places-center.vue';
 import Emails from './pages/email-center/email-center.vue';
 import Events from './pages/event-center/event-center.vue';
 
-Vue.http.options.root = 'http://localhost:3003';
-
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.http.options.root = 'http://localhost:3003';
 
 const routes = [{ 
     path: '/',
@@ -44,4 +42,3 @@ const app = new Vue({
         'main-nav': MainNav
     }
 }).$mount('#app')
-

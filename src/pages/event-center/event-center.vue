@@ -2,46 +2,29 @@
     <div id='app'>
      <h1>Event-center!</h1>
         <event-filter></event-filter>
-        <event-by-day :events="events"></event-by-day>
+        <event-details v-if="showDetails" :eventDetails="eventDetails" @closeDetails="showDetails = false"></event-details>
+        <event-by-day v-else :events="events" @sendDetails="sendDetails"></event-by-day>
     </div>
 </template>
 
 <script>
     import EventFilter from '../../components/events/event-filter/event-filter.vue';
     import EventByDay from '../../components/events/event-by-day/event-by-day.vue';
+    import eventDetails from '../../components/events/event-details/event-details.vue'
 
 
     export default {
         data() {
             return {
-                events: []
-                    // events : [
-                    //     {
-                    //         id: "1",
-                    //         name: "1 Hours intro session - Fullstack Coding Bootcamp",
-                    //         time: 1483456800000 
-                    //     } ,
-                    //     {
-                    //         id: "2",
-                    //         name: "1 Hours intro session - Fullstack Coding Bootcamp",
-                    //         time: 1483456800001 
-                    //     } ,
-                    //     {
-                    //         id: "3",
-                    //         name: "2 Hours intro session - Fullstack Coding Bootcamp",
-                    //         time: 1483123800000 
-                    //     } ,
-                    //     {
-                    //         id: "4",
-                    //         name: "3 Hours intro session - Fullstack Coding Bootcamp",
-                    //         time: 1483765800000 
-                    //     } ,
-                    // ]
+                events: [] ,
+                eventDetails : {} ,
+                showDetails : false
             }
         },
         components: {
             'event-filter': EventFilter,
-            'event-by-day': EventByDay
+            'event-by-day': EventByDay ,
+            'event-details' : eventDetails
         },
         methods: {
             reloadEvents() {
@@ -50,12 +33,16 @@
                     .then(events => {
                         this.events = events;
                     });
+            } ,
+            sendDetails(event) {
+                this.eventDetails = event;
+                this.showDetails = true
             }
         },
         created() {
             this.reloadEvents();
         },
-    }
+    } 
 </script>
 
 <style scoped>

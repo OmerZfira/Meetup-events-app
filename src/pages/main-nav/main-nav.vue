@@ -3,7 +3,7 @@
 <nav class="nav">
   <div class="nav-left">
     <a class="nav-item is-brand" href="#">
-      <img src="http://bulma.io/images/bulma-type.png" alt="Bulma logo">
+      <img src="./img/hadas-img.jpg" alt="Bulma logo">
     </a>
   </div>
 
@@ -11,28 +11,28 @@
       <router-link to="/" tag="a" active-class="active">
         <a class="nav-item">Home
           <span class="icon">
-            <i class="fa fa-github"></i>
+            <i class="fa fa-home"></i>
           </span>
         </a>
      </router-link>
      <router-link to="/emails" tag="a" active-class="active">
         <a class="nav-item">Emails
           <span class="icon">
-            <i class="fa fa-github"></i>
+            <i class="fa fa-envelope"></i>
           </span>
         </a>
      </router-link>
      <router-link to="/events" tag="a" active-class="active">
         <a class="nav-item">Events
           <span class="icon">
-            <i class="fa fa-github"></i>
+            <i class="fa fa-rocket"></i>
           </span>
         </a>
      </router-link>
      <router-link to="/places" tag="a" active-class="active">
         <a class="nav-item">Places
           <span class="icon">
-            <i class="fa fa-github"></i>
+            <i class="fa fa-map"></i>
           </span>
         </a>
      </router-link>
@@ -75,5 +75,17 @@
 </script> 
 
 <style scoped>
-  
+
+    #app {
+          max-width: 1200px;
+              margin: auto;
+    }
+
+    .nav-item img {
+      max-height: 58px;
+      border-radius: 50%;
+}
+   .nav-center {
+     align-items: center;
+   }
 </style>
