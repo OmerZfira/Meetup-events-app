@@ -38,7 +38,6 @@ app.delete('/item/:id', (req, res) => {
     res.end('the delete was succsesful!');
 })
 
-<<<<<<< HEAD
 
 
 // CREATE
@@ -54,13 +53,13 @@ app.post('/addEvent', (req, res) => {
     console.log('time step : ', getTimestep(dateString));
     event.time = getTimestep(dateString);
 
-
-    // const item = {}
-    // item.id = findNextId();
-    // item.price = req.body.price;
-    // item.title = req.body.title;
-    // item.description = req.body.description;
-    // items.push(item);
+});
+// const item = {}
+// item.id = findNextId();
+// item.price = req.body.price;
+// item.title = req.body.title;
+// item.description = req.body.description;
+// items.push(item);
 
 // CREATE email
 app.post('/add', (req, res) => {
@@ -70,7 +69,7 @@ app.post('/add', (req, res) => {
     email.id = findNextId();
     email.subject = req.body.subject;
     email.date = '';
-    email.isRead = false; 
+    email.isRead = false;
     email.isDisplayed = false;
     email.body = req.body.body;
     console.log(email);
@@ -119,8 +118,8 @@ app.put('/updateEvent', (req, res) => {
             event.venue.address_1 = req.body.address_1;
         }
     });
-    res.end('events has change!'); 
-}); 
+    res.end('events has change!');
+});
 
 app.listen(3003, () => {
     console.log('REST API listening on port 3003!')
