@@ -2,7 +2,7 @@ import style from './style.scss';
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import Toastr from 'vue-toastr';
+// import Toastr from 'vue-toastr';
 
 import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
