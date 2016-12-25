@@ -1,10 +1,9 @@
 <template>
     <div class="email-preview" :class="{isRead: email.isRead, currEmail: email.isDisplayed}">
-        <h4>   {{email.subject}}</h3>
+        <h3>{{email.subject}}</h3>
     </div>
 </template>
 <script>
-
     export default {
         props: {
             email: {
@@ -28,6 +27,12 @@
         font-weight: bold;
     }
 
+    @media screen and (max-width: 590px){
+        .email-preview {
+              overflow: scroll;
+        }
+    }
+
     img {
         max-height: 30px;
     }
@@ -40,6 +45,7 @@
 
     .currEmail {
         border: 2px solid yellow ;
+        color: white;
         
     }
 </style>

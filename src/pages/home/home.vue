@@ -5,8 +5,12 @@
           <h1>CodingAcademy Vue JS</h1>
           <p>Only for badass developers</p>
         </div>
+          <h1>Welcome to your meetup organizer!</h1>
+          <router-link to="/events">
+            <a class="closeEvents">View your closest events...</a>
+          </router-link>
       </div>
-    </div>
+    </div> 
 </template>
 
 <script>
@@ -27,7 +31,18 @@
 </script>
 
 <style scoped>
-    h1 {
-        color: lightblue;
+    .container {
+        color: #d7dc1b;
+        margin: 0 auto;
+        font-weight: bold;
+        font-size: 4rem;
+        margin-top: 1em;
+        text-shadow: 0.1em 0.1em 0.05em black;
+    }
+
+    .closeEvents {
+        font-size: 2.5rem;
+        text-shadow: 0.1em 0.1em 0.05em black;
+        color: white;
     }
 </style>

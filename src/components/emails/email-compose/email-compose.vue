@@ -1,30 +1,30 @@
 <template>
-    <div class="compose">
-        <label class="label">Subject</label>
+    <form class="compose">
         <p class="control">
-            <input class="input" type="text" placeholder="Text input" v-model="email.subject">
+            <input class="input" type="text" placeholder="Subject" v-model="email.subject">
         </p>
         <p class="control">
-        <textarea class="textarea" placeholder="Textarea" v-model="email.body"></textarea>
+            <textarea class="textarea" placeholder="Email Content" v-model="email.body"></textarea>
         </p>
         <p class="control">
-        <button class="button is-primary" @click="sendEmail">Submit</button>
-        <button class="button is-link">Cancel</button>
+            <button class="button is-primary" @click.prevent="saveEmail">Send</button>
+            <button class="button" @click.prevent="$emit('composeEmail',true)">Cancel</button>
         </p>
-    </div>
+    </form>
 </template>
 
 <script>
     export default {
         data() { 
             return {
-                email: {subject:'',body:''}
+                email: {subject:'',body:''},
             }
         },
         methods: {
-            sendEmail() {
+            saveEmail() {
+                this.$http.post('add', this.email);
                 this.$emit('emailSent', this.email);
-            }
+            },
         }
     }
 </script>
@@ -32,6 +32,15 @@
 <style scoped>
     .compose {
         position: relative;
-        width: 67%;
+        width: 65%;
+        padding: 10px;
+        color: white;
+        background-color: #646768;
+    }
+
+    @media screen and (max-width: 590px){
+        .compose {
+              width: auto;
+        }
     }
 </style>

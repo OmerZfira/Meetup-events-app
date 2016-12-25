@@ -6,8 +6,9 @@
             <section class="email-details-summary">
                 <hr>
                 <h1>{{displayedEmail.subject}}</h1>
-                <p>{{displayedEmail.body}}</p>
                 <hr>
+                <br>
+                <p>{{displayedEmail.body}}</p>
             </section>
         </div>
     </div>
@@ -42,15 +43,19 @@
 </script>
 
 <style scoped>
+    .email-details-summary > h1{
+        font-size: 2rem;
+    }
+
     .email-details {
         background: white;
         flex: 3 2 50%;
-        padding: 10px;  
+        padding: 20px;  
         background-color: black;
         width: 50%;
         color: white;
         opacity: 0.8;
-        height: 100%;
+        height: auto;
     }
     .wrapper {
         height: 100%;
@@ -62,17 +67,12 @@
     .email-details-header, .email-details-footer {
         align-self: flex-end;
     }
-    hr {
-        width: 90%;
-    }
 
     @media screen and (max-width: 590px){
         .email-details {
               width: 100%;
     }
 
-    .email-details-summary > h1{
-        font-size: 100rem;
-    }
+    
 }
 </style>
