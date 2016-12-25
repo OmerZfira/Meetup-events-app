@@ -120,7 +120,7 @@ app.put('/updateEvent', (req, res) => {
         }
     });
     res.end('events has change!'); 
-});
+}); 
 
 app.listen(3003, () => {
     console.log('REST API listening on port 3003!')
