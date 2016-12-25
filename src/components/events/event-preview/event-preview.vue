@@ -19,16 +19,16 @@
         <p v-if="!isInEditMode" class="title is-5">{{event.name}}</p>
         <input v-else type="text" name="name" v-model="event.name">
 
-        <p v-if="!isInEditMode" class="subtitle is-6" :contenteditable="isInEditMode">{{event.status}}</p>
+        <p v-if="!isInEditMode" class="subtitle is-6">{{event.status}}</p>
         <input v-else  type="text" name="status" v-model="event.status">
 
       </div>
     </div>
 
-    <div class="content" :contenteditable="isInEditMode">
+    <div class="content">
         {{event.name}}
       <br>
-        <small v-if="!isInEditMode" :contenteditable="isInEditMode">{{event.venue.address_1}}</small>
+        <small v-if="!isInEditMode">{{event.venue.address_1}}</small>
         <input v-else type="text" name="adress" v-model="event.venue.address_1">
     </div>
         <a class="button is-primary"  @click.stop="sendDetails">More details</a>

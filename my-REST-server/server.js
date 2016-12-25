@@ -58,6 +58,15 @@ app.put('/updateEvent', (req, res) => {
     console.log('req ID', req.body.id);
     events.events.forEach(event => {
         if (event.id === req.body.id) {
+            if (req.body.link !== undefined) {
+                event.link = req.body.link;
+            }
+            if (req.body.description) {
+                event.description = req.body.description;
+            }
+            if (req.body.address_2) {
+                event.venue.address_2 = req.body.address_2;
+            }
             event.name = req.body.name;
             event.status = req.body.status;
             event.venue.address_1 = req.body.address_1;

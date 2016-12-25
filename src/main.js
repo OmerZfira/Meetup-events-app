@@ -16,7 +16,7 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.http.options.root = 'http://localhost:3003';
 
-const routes = [{ 
+const routes = [{
     path: '/',
     component: Home
 }, {
