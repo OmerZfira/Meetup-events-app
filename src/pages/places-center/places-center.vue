@@ -6,9 +6,7 @@
       <place-details v-else :displayedPlace="displayedPlace" @deletePlace="deletePlace" @closeDetails="closeDetails">
       </place-details>
       <place-map :places="places" :updateMap="updateMap">
-
       </place-map>
-
     </section>
   </div>
 </template>

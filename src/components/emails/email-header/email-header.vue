@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <h3>INBOX</h3>
-        <button class="compose" @click="composeEmail">COMPOSE</button>
+        <button class="button is-small compose" @click="composeEmail"><span class="fa fa-pencil">  COMPOSE</span></button>
     </div>
 </template>
 
@@ -13,7 +13,6 @@
         },
         methods: {
             composeEmail() {
-                
                 this.$emit('composeEmail')
             }
         }
@@ -41,10 +40,8 @@ h3{
 }
 
 .compose{
-    color: #3a4144;
-    font-size: 0.8rem;
-    margin: 1em;
-    width: 100px;
-    height: 20px;
+    margin-right: 1em;
+    margin-top: 0.7em;
 }
+
 </style>

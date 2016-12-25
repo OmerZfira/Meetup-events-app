@@ -5,8 +5,6 @@
 </template>
 
 <script>
-
-
     export default {
         props: {
             place: {
@@ -18,27 +16,26 @@
 </script>
 
 <style scoped>
-.place-preview {
-    border: 1px lightgray outset ;
-    background: #7aebba;
-    display:flex;
-    padding: 5px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    cursor: pointer;
-}
+    .place-preview {
+        border: 1px lightgray outset ;
+        background: #7aebba;
+        display:flex;
+        padding: 5px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        cursor: pointer;
+    }
 
-img {
-    max-height: 30px;
-}
+    img {
+        max-height: 30px;
+    }
 
-.unMarked>h4 {
-    font-weight: normal;
-}
+    .unMarked>h4 {
+        font-weight: normal;
+    }
 
-.displayed {
-    background: #FDFFE7;
-    border: 2px lightgray inset ;
-}
-
+    .displayed {
+        background: #FDFFE7;
+        border: 2px lightgray inset ;
+    }
 </style>

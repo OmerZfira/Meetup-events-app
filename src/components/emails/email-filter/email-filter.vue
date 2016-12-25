@@ -1,27 +1,29 @@
 <template>
     <div class="email-filter">
         <section class="wrapper">
-            <input class="search" type="text" v-model.lazy="filter.txt" 
-                                @keyup.enter="stringFilter" id="keywords" placeholder="Search">
+            <input class="search" type="text" v-model="filter.txt" 
+                                  @keyup.enter="stringFilter" 
+                                  id="keywords" placeholder="Search"/>
             <div>
             <div class="buttons">
-                
                 <input type="radio" v-model="filter.readStatus" 
                                     @change="stringFilter" 
                                     value= "all"
-                                    id="all"/>
+                                    id="all"
+                                    />
                 <label for="all">All</label>
-                
+
                 <input type="radio" v-model="filter.readStatus"
                                     @change="stringFilter" 
-                                    value="true"
-                                    id="read" />
+                                    value="read"
+                                    id="read"
+                                    />
                 <label for="read">Read</label>
-                
+
                 <input type="radio" v-model="filter.readStatus" 
                                     @change="stringFilter" 
-                                    value="false"
-                                    id="unread">
+                                    value="unread"
+                                    id="unread"/>
                 <label for="unread">Unread</label>
             </div>
              </div>
@@ -43,7 +45,7 @@
             stringFilter() {
                 // sends the filter object to list
                 this.$emit('filter', this.filter)
-            }
+            },
         }
     }
 </script>

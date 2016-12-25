@@ -1,8 +1,7 @@
 <template>
     <div class="progress-bar">
-        <!--<bar-filler>part: {{barData[0]}}, total: {{barData[1]}}</bar-filler>-->
-        <div class="bar-filler" :style="'width:' + test + '%'">
-        <div class="progress-bar-num">{{test}}% of emails read</div>
+        <div class="bar-filler" :style="'width:' + calculatePercentOfEmails + '%'">
+            <div class="progress-bar-details">{{calculatePercentOfEmails}}% of emails read</div>
         </div>
     </div>
 </template>
@@ -16,7 +15,7 @@
             }
         },
         computed:{
-            test() {
+            calculatePercentOfEmails() {
                 if (!this.barData[1]) return 100;
                 else return parseInt(100 - this.barData[0] / this.barData[1] * 100)
             }
@@ -30,7 +29,7 @@
         background: #3a4144;
         border-radius: 0 0 15px 15px;
         height: 100%;
-        
+        border: 2px solid #3a4144;
     }
 
     .bar-filler {
@@ -43,7 +42,7 @@
         color: white;
     }
 
-    .progress-bar-num {
+    .progress-bar-details {
         position: absolute;
         margin: 0 35%;
         font-weight: bold;
