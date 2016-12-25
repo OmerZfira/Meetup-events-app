@@ -8,13 +8,6 @@
             <div class="buttons">
                 <input type="radio" v-model="filter.readStatus" 
                                     @change="stringFilter" 
-                                    value= "all"
-                                    id="all"
-                                    />
-                <label for="all">All</label>
-
-                <input type="radio" v-model="filter.readStatus" 
-                                    @change="stringFilter" 
                                     value="all"
                                     id="all"/>
                 <label for="unread">All</label>
@@ -25,8 +18,6 @@
                                     id="favorites"
                                     />
                 <label for="read">Favorites</label>
-
-                
             </div>
              </div>
         </section>

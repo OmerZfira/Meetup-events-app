@@ -50,7 +50,9 @@
 .place-details {
     flex: 1 1 30%;
     padding: 10px;  
-    background: red;
+    background: black;
+    opacity: 0.8;
+    color: white
 }
 
 .wrapper {
