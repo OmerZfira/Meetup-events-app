@@ -4,7 +4,7 @@
         <hr>
         <ul>
             <li v-for="place in places">
-                <place-preview :place="place" @click.native="$emit('displayPlace', place.venue.id)"></place-preview>
+                <place-preview :place="place" @click.native="$emit('displayPlace', place.id)"></place-preview>
             </li>
         </ul>
     </div>
@@ -30,37 +30,38 @@
 </script>
 
 <style scoped>
-.place-list {
-        border: 1px lightgray outset ;
-        flex: 1 1 30%;
-        background: #99F0CA;
+    .place-list {
+            border: 1px;
+            flex: 1 1 30%;
+            background-color: #85b1c4;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 13px;
+            overflow: scroll;
+            height: auto;
+    }
+    place-filter {
+
+    }
+
+    hr {
+        height:1px;
+        background: darkgray;
+        border:0;
+        margin: 5px 0;
+    }
+
+    ul {
         display: flex;
+        padding: 0;
+        margin: 0;
         flex-direction: column;
-        justify-content: flex-start;
-        padding: 5px;
-}
-place-filter {
+        justify-content: center;
+    }
 
-}
-
-hr {
-    height:1px;
-    background: darkgray;
-    border:0;
-    margin: 5px 0;
-}
-
-ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    flex-direction: column;
-    justify-content: center;
-}
-
-li {
-    /*flex: 1 1 40%;*/
-    margin: 1px;
-}
+    li {
+        margin: 1px;
+    }
 
 </style>

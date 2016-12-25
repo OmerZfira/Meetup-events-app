@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-        <h3>INBOX</h3>
-        <button class="button is-small compose" @click="composeEmail"><span class="fa fa-pencil">  COMPOSE</span></button>
+        <h3>Your Places</h3>
+        <button class="button is-small compose" @click="addPlace"><span class="fa fa-pencil">  Add a Place</span></button>
     </div>
 </template>
 
@@ -12,8 +12,8 @@
             }
         },
         methods: {
-            composeEmail() {
-                this.$emit('composeEmail',false)
+            addPlace() {
+                this.$emit('addPlace',false);
             }
         }
     }
@@ -22,7 +22,7 @@
 <style scoped>
 .header {
     border-radius: 15px 15px 0 0;
-    background: #3a4144;
+    background: #214a5b;
     padding: 5px;
     display: flex;
     justify-content: space-between;

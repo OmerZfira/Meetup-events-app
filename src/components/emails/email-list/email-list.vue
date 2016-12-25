@@ -39,8 +39,6 @@
             height: auto;
     }
     
-     
-
     hr {
         height:1px;
         background: darkgray;

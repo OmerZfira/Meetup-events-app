@@ -1,31 +1,39 @@
 <template>
-    <div class="place-filter">
+    <div class="email-filter">
         <section class="wrapper">
-            <label for="keywords" style="margin-bottom:0">Search by:</label>
-            <br>
-            <input  type="text" v-model.lazy="filter.txt" 
-                                @keyup.enter="streamFilter" id="keywords" placeholder="Search" size="20">
+            <input class="search" type="text" v-model="filter.txt" 
+                                  @keyup.enter="stringFilter" 
+                                  id="keywords" placeholder="Search"/>
+            <div>
             <div class="buttons">
+                <input type="radio" v-model="filter.readStatus" 
+                                    @change="stringFilter" 
+                                    value= "all"
+                                    id="all"
+                                    />
                 <label for="all">All</label>
-                <input type="radio" v-model="filter.type" 
-                                    @change="streamFilter" 
-                                    value="all" id="all" />
-                <label for="favorites">Favorites</label>
-                <input type="radio" v-model="filter.type"
-                                    @change="streamFilter" 
-                                    value="favorites" id="favorites" />
-                <label for="upcoming">Upcoming</label>
-                <input type="radio" v-model="filter.type" 
-                                    @change="streamFilter" 
-                                    value="upcoming" id="upcoming">
+
+                <input type="radio" v-model="filter.readStatus" 
+                                    @change="stringFilter" 
+                                    value="all"
+                                    id="all"/>
+                <label for="unread">All</label>
+
+                <input type="radio" v-model="filter.readStatus"
+                                    @change="stringFilter" 
+                                    value="favorites"
+                                    id="favorites"
+                                    />
+                <label for="read">Favorites</label>
+
+                
             </div>
+             </div>
         </section>
     </div>
 </template>
 
 <script>
-
-
     export default {
         data() {
             return {
@@ -44,21 +52,26 @@
 </script>
 
 <style scoped>
-.place-filter {
-    min-height: 50px;
-}
+     label {
+        font-size: 0.8em;
+    }
+    input {
+        border-radius: 6px;
+        padding: 5px;
+        font-size: 0.7rem;
+        margin-top: -5em;
+    }
+    input,label {
+        cursor: pointer;
+    }
+   
+    .buttons {
+        cursor: pointer;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 
-label {
-    font-size: 0.8em;
-}
-
-input {
-    font-size: 0.6em;
-}
-.buttons input,label {
-    cursor: pointer;
-}
-
-
-
+    .search {
+        width: 100%;
+    }
 </style>
