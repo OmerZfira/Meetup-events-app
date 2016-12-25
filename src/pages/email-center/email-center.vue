@@ -4,9 +4,9 @@
     <section class="email-content">
       <email-list :emails="filteredEmails" @displayEmail="displayEmail" @filter="emailFilter = $event">
       </email-list>
-      <email-details v-if="shouldshow" :displayedEmail="displayedEmail" @deleteEmail="deleteEmail" >
+      <email-details v-if="shouldshowDetails" :displayedEmail="displayedEmail" @deleteEmail="deleteEmail" >
       </email-details>
-      <email-compose v-else @emailSent="emailSent">
+      <email-compose v-else @emailSent="emailSent" @composeEmail="composeEmail">
       </email-compose>
     </section>
     <email-status :barData="[unreadEmailsCounter, emailsDB.length]">
@@ -25,66 +25,83 @@
     data() {
       return {
         emailsDB: [
-          { id: 1, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-          { id: 2, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
-          { id: 3, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' },
-          { id: 4, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-          { id: 5, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
-          { id: 6, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' },
-          { id: 7, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
-          { id: 8, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
-          { id: 9, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' }
+          // { id: 1, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
+          // { id: 2, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
+          // { id: 3, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' },
+          // { id: 4, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
+          // { id: 5, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
+          // { id: 6, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' },
+          // { id: 7, subject: 'hello', date: moment().format(), isRead: false, isDisplayed: false, body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' },
+          // { id: 8, subject: 'vue', date: moment().format(), isRead: false, isDisplayed: false, body: 'Quas reprehenderit autem ea voluptatum eligendi quis aut.' },
+          // { id: 9, subject: 'js', date: moment().format(), isRead: false, isDisplayed: false, body: 'Harum perspiciatis suscipit veniam cupiditate deleniti odit laboriosam.' }
         ],
+        currFilteredEmails: [],
         displayedEmail: {},
-        shouldshow: true,
-        unreadEmailsCounter: 3,
-        emailFilter: {readStatus: 'all'},
+        shouldshowDetails: true,
+        unreadEmailsCounter: 0,
+        emailFilter: {txt:'', readStatus: 'all'},
       }
     },
     methods: {
       composeEmail(ev) {
-        this.shouldshow = ev;
+        this.shouldshowDetails = ev;
        },
       displayEmail(emailId) {
-        console.log('method displayEmail');
+        this.shouldshowDetails = true;
         this.emailsDB.forEach(email => {
           if (email.id === emailId) {
             email.isDisplayed = true;
+            if(!email.isRead) {
+              this.unreadEmailsCounter--;
+            }
             this.displayedEmail = email;
             this.displayedEmail.isRead = true;
-            this.unreadEmailsCounter--;
           } else {
             email.isDisplayed = false;
           }
-        
         });
       },
+      reloadEmails() {
+          this.$http.get('emails')
+              .then(res => res.json())
+              .then(emails => {
+                  this.emailsDB = emails;
+                  this.unreadEmailsCounter = this.emailsDB.length;
+              });
+      },
       emailSent(email) {
+        this.shouldshowDetails = true;
         this.emailsDB.push(email);
-        this.shouldshow = true;
       },
       deleteEmail(emailId) {
-        this.emailsDB = this.emailsDB.filter(email => email.id !== emailId);
         this.displayedEmail.subject ='';
         this.displayedEmail.body ='';
+        this.$http.delete(`item/${emailId}`);
+        this.emailsDB = this.emailsDB.filter(email => email.id !== emailId);
       },
     },
     computed: {
-      filteredEmails() {
-        if (!this.emailFilter.txt && this.emailFilter.readStatus === 'all') {
-          return this.emailsDB
-        }
-        else {
-          return this.emailsDB.filter(email => {
-            // If the email subject include the text in the filter
-            return (email.subject.toLowerCase().includes(this.emailFilter.txt.toLowerCase()) ||
-                    // OR If the email body include the text in the filter
-                    email.body.toLowerCase().includes(this.emailFilter.txt.toLowerCase()) ||
-                    // OR If the email status include the text in the filter
-            (this.emailFilter.readStatus === 'all' || email.isRead === this.emailFilter.readStatus))
+      displayedEmails() {
+        if(this.emailFilter.readStatus === 'all') {
+          return this.currFilteredEmails = this.emailsDB;
+        } else if(this.emailFilter.readStatus === 'read') {
+          return this.currFilteredEmails = this.emailsDB.filter(email => {
+              return email.isRead;
           });
-
+        } else if (this.emailFilter.readStatus === 'unread') {
+            return this.currFilteredEmails = this.emailsDB.filter(email => {
+              return !email.isRead;
+          });
         }
+      },
+      filteredEmails() {
+        this.displayedEmails;
+        let emailTxt = this.emailFilter.txt.toLowerCase();
+        let emailReadStatus = this.emailFilter.readStatus;
+        return this.currFilteredEmails.filter(email => {
+            return (email.subject.toLowerCase().includes(emailTxt) ||
+            email.body.toLowerCase().includes(emailTxt))
+        });
       }
     },
     components: {
@@ -93,44 +110,46 @@
       emailDetails,
       emailStatus,
       emailCompose
+    },
+    created(){
+      this.reloadEmails();
     }
   }
 </script>
 
-<style>
-.email-center {
-  width: 98%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  position: relative;
-  height: 100%;
-}
-
-.email-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border: 2px solid #3a4144;
-  height: 100%;
-  position: relative;
-}
-
-@media screen and (max-width: 590px){
-  .email-content{
+<style scoped>
+  .email-center {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
     flex-direction: column;
+    padding: 10px;
+    position: relative;
+    height: 100%;
+    
   }
 
-}
+  .email-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: 2px solid #3a4144;
+    height: 100%;
+    position: relative;
+  }
 
+  @media screen and (max-width: 590px){
+    .email-content{
+      flex-direction: column;
+    }
+  }
 
-ul {
-  list-style: none;
-}
+  ul {
+    list-style: none;
+  }
 
-email-status {
-  display:flex;
-  justify-content: space-around;
-}
+  email-status {
+    display:flex;
+    justify-content: space-around;
+  }
 </style>

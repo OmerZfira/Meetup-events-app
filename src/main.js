@@ -1,20 +1,20 @@
 import style from './style.scss';
 import Vue from 'vue'
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource'
+import VueResource from 'vue-resource';
+import Toastr from 'vue-toastr';
 
 import Home from './pages/home/home.vue';
 import About from './pages/about/about.vue';
 import MainNav from './pages/main-nav/main-nav.vue';
  
-import Places from './pages/places/places-center.vue';
+import Places from './pages/places-center/places-center.vue';
 import Emails from './pages/email-center/email-center.vue';
 import Events from './pages/event-center/event-center.vue';
 
-Vue.http.options.root = 'http://localhost:3003';
-
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.http.options.root = 'http://localhost:3003';
 
 const routes = [{ 
     path: '/',
@@ -41,7 +41,7 @@ const router = new VueRouter({
 const app = new Vue({
     router,
     components: {
-        'main-nav': MainNav
+        'main-nav': MainNav,
     }
 }).$mount('#app')
 
