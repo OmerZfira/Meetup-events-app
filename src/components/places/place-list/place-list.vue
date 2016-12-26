@@ -38,11 +38,8 @@
             flex-direction: column;
             justify-content: flex-start;
             padding: 13px;
-            overflow: scroll;
             height: auto;
-    }
-    place-filter {
-
+            border-radius: 0 0 0 5px;
     }
 
     hr {

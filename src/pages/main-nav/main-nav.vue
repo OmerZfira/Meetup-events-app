@@ -18,9 +18,7 @@
      </router-link>
      <router-link to="/events" tag="a" active-class="active">
         <a class="nav-item">Events
-          <span class="icon"></span>
-            <i class="fa fa-rocket"></i>
-          </span>
+          
         </a>
      </router-link>
      <router-link to="/places" tag="a" active-class="active">
@@ -33,28 +31,6 @@
      </router-link>
   </div>
 
-<span class="hamburger nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-
-  <div class="nav-right nav-menu">
-    <span class="nav-item">
-      <a class="button" >
-        <span class="icon">
-          <i class="fa fa-twitter"></i>
-        </span>
-        <span>Places</span>
-      </a>
-      <a class="button is-primary" href="#">
-        <span class="icon">
-          <i class="fa fa-download"></i>
-        </span>
-        <span>Event</span>
-      </a>
-    </span>
-  </div>
 </nav>
     </div> 
 </template>

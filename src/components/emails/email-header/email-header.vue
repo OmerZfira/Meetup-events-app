@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <h3>INBOX</h3>
-        <button class="button is-small compose" @click="composeEmail"><span class="fa fa-pencil">  COMPOSE</span></button>
+        <button class="button is-small is-primary compose" @click="composeEmail"><span class="fa fa-pencil"></span> COMPOSE </button>
     </div>
 </template>
 
@@ -40,6 +40,7 @@ h3{
 }
 
 .compose{
+    font-family: 'Arial';
     margin-right: 1em;
     margin-top: 0.7em;
 }

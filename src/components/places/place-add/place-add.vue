@@ -1,28 +1,26 @@
 <template>
     <form class="placeAdd">
         <p class="control">
-            <input class="input" type="text" placeholder="Place name" v-model="filter.name" @keyup.enter="stringFilter">
+            <input class="input" type="text" placeholder="Place name" v-model="place.name">
         </p>
         <p class="control">
-            <input class="input" type="text" placeholder="latitude" v-model="filter.latitude" @keyup.enter="stringFilter">
+            <input class="input" type="text" placeholder="latitude" v-model="place.lat">
         </p>
         <p class="control">
-            <input class="input" type="text" placeholder="longitude" v-model="filter.longitude" @keyup.enter="stringFilter">
+            <input class="input" type="text" placeholder="longitude" v-model="place.long">
         </p>
         <p>
-            <input type="radio" v-model="filter.type" 
-                                @change="stringFilter" 
+            <input type="radio" v-model="place.type" 
                                 value= "all"
                                 id="all"/>
             <label for="all">All</label>
-            <input type="radio" v-model="filter.type" 
-                                @change="stringFilter" 
+            <input type="radio" v-model="place.type" 
                                 value= "favorites"
                                 id="favorites"/>
             <label for="favorites">Favorites</label>
         </p>
         <p class="control">
-            <textarea class="textarea" placeholder="Tags (please seperate by commas)" v-model="filter.tags"></textarea>
+            <textarea class="textarea" placeholder="Tags (please seperate by commas)" v-model="place.tags"></textarea>
         </p>
         <p class="control">
             <button class="button is-primary" @click.prevent="savePlace">Save</button>
@@ -35,7 +33,7 @@
     export default {
         data() { 
             return {
-                filter: {
+                place: {
                     name:'',
                     lat:'',
                     long:'',
@@ -46,7 +44,7 @@
         },
         methods: {
             savePlace() {
-                this.$http.post('addplace', this.email);
+                this.$http.post('addplace', this.place);
                 this.$emit('placeSaved', this.place);
             },
             stringFilter() {

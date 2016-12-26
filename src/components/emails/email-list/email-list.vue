@@ -35,7 +35,6 @@
             flex-direction: column;
             justify-content: flex-start;
             padding: 13px;
-            overflow: scroll;
             height: auto;
     }
     

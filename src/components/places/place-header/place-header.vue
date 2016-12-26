@@ -1,7 +1,8 @@
 <template>
     <div class="header">
         <h3>Your Places</h3>
-        <button class="button is-small compose" @click="addPlace"><span class="fa fa-pencil">  Add a Place</span></button>
+        
+        <button class="button is-small is-primary compose" @click="addPlace"><span class="fa fa-plus"></span>Add a Place</button>
     </div>
 </template>
 
@@ -21,7 +22,7 @@
 
 <style scoped>
 .header {
-    border-radius: 15px 15px 0 0;
+    border-radius: 5px 5px 0 0;
     background: #214a5b;
     padding: 5px;
     display: flex;
@@ -40,6 +41,7 @@ h3{
 }
 
 .compose{
+    font-family: 'Arial';
     margin-right: 1em;
     margin-top: 0.7em;
 }

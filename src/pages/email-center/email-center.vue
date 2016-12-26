@@ -126,7 +126,6 @@
     padding: 10px;
     position: relative;
     height: 100%;
-    
   }
 
   .email-content {

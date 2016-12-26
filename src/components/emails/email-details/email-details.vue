@@ -72,7 +72,5 @@
         .email-details {
               width: 100%;
     }
-
-    
 }
 </style>
