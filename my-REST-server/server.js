@@ -44,7 +44,12 @@ app.delete('/item/:id', (req, res) => {
     res.end('the delete was succsesful!');
 });
 
-
+// DELETE place
+app.delete('/place/:id', (req, res) => {
+    const id = +req.params.id;
+    places.places = places.places.filter(currPlace => currPlace.id !== id);
+    res.end('the delete was succsesful!');
+});
 
 // CREATE
 app.post('/addEvent', (req, res) => {
@@ -78,6 +83,21 @@ app.post('/addemail', (req, res) => {
     res.end('add!');
 });
 
+// CREATE place
+app.post('/addplace', (req, res) => {
+    console.log('req', req.body);
+
+    let place = {}
+    place.id = findNextId();
+    place.name = req.body.name;
+    place.lat = req.body.lat;
+    place.long = req.body.long;
+    place.tags = req.body.tags;
+    place.type = req.body.type;
+    place.isDisplayed = false;
+    places.places.push(place);
+    res.end('add!');
+});
 
 function randomId() {
     let str = '';

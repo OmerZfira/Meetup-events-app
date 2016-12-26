@@ -27,12 +27,6 @@
         font-weight: bold;
     }
 
-    @media screen and (max-width: 590px){
-        .email-preview {
-              overflow: scroll;
-        }
-    }
-
     img {
         max-height: 30px;
     }

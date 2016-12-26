@@ -2,13 +2,13 @@
     <div class="place-details">
         <div class="wrapper">
             <section class="place-details-header">
-                <button class="btn btn-info" @click="$emit('closeDetails')">&nbsp;<span>Back</span></button>
-                <button v-show="showDelete" class="button is-small is-danger fa fa-trash-o" @click="deletePlace">&nbsp;</button>
+                <button class="button is-small is-info" @click="$emit('closeDetails')"><span class="fa fa-arrow-left"></span>Back</button>
+                <button v-show="showDelete" class="deleteBtn button is-small is-danger fa fa-trash-o" @click="deletePlace"></button>
             </section>
             <section class="place-details-summary">
             <hr>
                 <h3>{{displayedPlace.name}}</h3>
-                {{displayedPlace.lat}}
+                    {{displayedPlace.tags}}
             <hr>
             </section>
             <section class="place-details-footer">
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-
-
     export default {
         props: {
             displayedPlace: {
@@ -34,41 +32,35 @@
             },
         },
         computed: {
-            computed: {
-                showDelete() {
-                    if(this.displayedPlace.isDisplayed === true) {
-                        return true;
-                    }
+            showDelete() {
+                if(this.displayedPlace.isDisplayed === true) {
+                    return true;
                 }
             }
         }
     }
-
 </script>
 
 <style scoped>
-.place-details {
-    flex: 1 1 30%;
-    padding: 10px;  
-    background: black;
-    opacity: 0.8;
-    color: white
-}
+    .place-details {
+        flex: 1 1 30%;
+        padding: 10px;  
+        background: black;
+        opacity: 0.8;
+        color: white;
+        border-radius: 0 0 0 5px;
+    }
 
-.wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: space-between;
-}
+    .wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: space-between;
+    }
 
-.place-details-header, .place-details-footer {
-    align-self: flex-end;
-}
-
-hr {
-    width: 90%;
-}
+    .deleteBtn {
+        align-self: flex-end;
+    }
 
 </style>
