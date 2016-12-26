@@ -25,7 +25,7 @@
         components: {
             placePreview,
             placeFilter
-        }
+        },
     }
 </script>
 

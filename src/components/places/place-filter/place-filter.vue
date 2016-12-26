@@ -1,25 +1,25 @@
 <template>
     <div class="email-filter">
         <section class="wrapper">
-            <input class="search" type="text" v-model="filter.txt" 
+            <input class="search" type="text" v-model="filter.name" 
                                   @keyup.enter="stringFilter" 
                                   id="keywords" placeholder="Search"/>
             <div>
-            <div class="buttons">
-                <input type="radio" v-model="filter.readStatus" 
-                                    @change="stringFilter" 
-                                    value="all"
-                                    id="all"/>
-                <label for="unread">All</label>
+                <div class="buttons">
+                    <input type="radio" v-model="filter.type" 
+                                        @change="stringFilter" 
+                                        value="all"
+                                        id="all"/>
+                    <label for="all">All</label>
 
-                <input type="radio" v-model="filter.readStatus"
-                                    @change="stringFilter" 
-                                    value="favorites"
-                                    id="favorites"
-                                    />
-                <label for="read">Favorites</label>
+                    <input type="radio" v-model="filter.type"
+                                        @change="stringFilter" 
+                                        value="favorites"
+                                        id="favorites"
+                                        />
+                    <label for="favorites">Favorites</label>
+                </div>
             </div>
-             </div>
         </section>
     </div>
 </template>
@@ -29,13 +29,13 @@
         data() {
             return {
                 filter: {
-                    txt: '',
+                    name: '',
                     type: 'all'
                 }
             }
         },
         methods: {
-            streamFilter() {
+            stringFilter() {
                 this.$emit('filter', this.filter)
             }
         }
