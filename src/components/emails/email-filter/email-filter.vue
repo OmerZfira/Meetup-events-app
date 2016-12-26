@@ -45,7 +45,7 @@
             stringFilter() {
                 // sends the filter object to list
                 this.$emit('filter', this.filter)
-            },
+            }
         }
     }
 </script>

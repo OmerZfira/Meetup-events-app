@@ -63,7 +63,7 @@
         currFilteredPlaces: [],
         shouldshowMap: true,
         displayedPlace: {},
-        placeFilter: {name:'', tags:'', type: 'all'},
+        placeFilter: {name:'', lat:'', long:'', tags:'', type: 'all'},
       }
     },
     computed: {
