@@ -29,10 +29,12 @@
         <small v-if="!isInEditMode">{{event.venue.address_1}}</small>
         <input v-else type="text" name="adress" v-model="event.venue.address_1">
     </div>
-        <a class="button is-primary"  @click.stop="sendDetails">More details</a>
-        <a class="button is-success" @click.stop="isInEditMode = !isInEditMode"> Edit</a>
-        <a class="button is-success" v-show="isInEditMode" @click ="updateDetails">Save</a>
   </div>
+            <div class ="btns">
+                <a class="button is-primary"  @click.stop="sendDetails">More details</a>
+                <a class="button is-success" @click.stop="isInEditMode = !isInEditMode"> Edit</a>
+                <a class="button is-success" v-show="isInEditMode" @click ="updateDetails">Save</a>
+          </div>
 </div> 
     </div>
 </template>
@@ -86,5 +88,15 @@
     .down-prev {
       display: flex;
       justify-content: space-between;
+    }
+    .btns {
+      position: absolute;
+      bottom: 5px;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .content {
+      padding-bottom: 15%;
     }
 </style>
