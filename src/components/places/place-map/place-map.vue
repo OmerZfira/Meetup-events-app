@@ -35,8 +35,8 @@
                             place.tags + '</div>');
                         infowindow.setOptions({disableAutoPan: true})
                         let latlangs = {};
-                        latlangs.lat = place.lat;
-                        latlangs.lng = place.lng;
+                        latlangs.lat = +place.lat;
+                        latlangs.lng = +place.lng;
                         let marker = new google.maps.Marker({
                             position: latlangs,
                             map: map
