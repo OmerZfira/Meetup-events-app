@@ -1,6 +1,5 @@
 <template>
     <div id='app'>
-    <label class="label">filter</label>
         <p class="control flex-center">
         <span class="select">
             <select @click="filterName=''" v-model="filterType">
@@ -136,5 +135,8 @@
     .flex-center {
         display:flex;
         justify-content: center;
-    }
+    } 
+    a:hover, a:focus {
+    text-decoration: none;
+}
 </style>

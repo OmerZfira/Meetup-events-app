@@ -30,12 +30,7 @@
 </script>
 
 <style scoped>
-   h1{
-    font-size: 3em;
-    font-weight: 500;
-    margin: 20px;
-    text-decoration: underline;
-   }
+
     #app {
         display: flex;
         flex-direction: column;
@@ -47,6 +42,7 @@
 
     ::-webkit-scrollbar {
     width: 12px;
+
 }
  
 ::-webkit-scrollbar-track {
@@ -56,10 +52,13 @@
  
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    background : red;
+
 }
 ::-webkit-scrollbar-corner {
   display : none;
+
 }
 .notification.is-success { 
     background-color: #2ccf66;
